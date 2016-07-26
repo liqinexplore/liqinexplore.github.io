@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-Hans">
 <head>
 
     <!--[if lt IE 9]>
@@ -11,20 +11,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="����" />
+<meta name="author" content="李钦" />
 
 
 
-<meta name="description" content="React �ʼ�React �">
+<meta name="description" content="前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：
+背景透明度问题 1 背景透明 1background-color:transparent;背景透明
+ 2 背景颜色透明 12background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）background: hsla(0,100%,50%,0.5);// HSLA（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LQ_Blog">
-<meta property="og:url" content="https://qingege.github.io/2016/07/01/new/index.html">
+<meta property="og:title" content="CSS背景图片处理">
+<meta property="og:url" content="https://qingege.github.io/2016/07/21/css/css/index.html">
 <meta property="og:site_name" content="LQ_Blog">
-<meta property="og:description" content="React �ʼ�React �">
-<meta property="og:updated_time" content="2016-07-01T03:00:54.854Z">
+<meta property="og:description" content="前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：
+背景透明度问题 1 背景透明 1background-color:transparent;背景透明
+ 2 背景颜色透明 12background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）background: hsla(0,100%,50%,0.5);// HSLA（">
+<meta property="og:updated_time" content="2016-07-26T11:05:12.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LQ_Blog">
-<meta name="twitter:description" content="React �ʼ�React �">
+<meta name="twitter:title" content="CSS背景图片处理">
+<meta name="twitter:description" content="前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：
+背景透明度问题 1 背景透明 1background-color:transparent;背景透明
+ 2 背景颜色透明 12background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）background: hsla(0,100%,50%,0.5);// HSLA（">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>LQ_Blog</title>
+<title>CSS背景图片处理 | LQ_Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -72,7 +78,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -99,13 +105,20 @@
             <img src="/img/avatar.png" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">����</a></h1>
+          <h1 class="header-author"><a href="/">李钦</a></h1>
         </hgroup>
 
         
         <p class="header-subtitle">Way to explore</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -170,11 +183,9 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:liqintiantai@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                                <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
                             
                         </ul>
                     </nav>
@@ -183,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
                     </div>
                 </section>
                 
@@ -218,7 +229,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">����</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">李钦</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -226,7 +237,7 @@
                 <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">����</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">李钦</a></h1>
             </hgroup>
             
             <p class="header-subtitle">Way to explore</p>
@@ -248,11 +259,9 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:liqintiantai@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
                             
                         </ul>
             </nav>
@@ -260,11 +269,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-new" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-css/css" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/01/new/" class="article-date">
-      <time datetime="2016-07-01T02:59:55.160Z" itemprop="datePublished">2016-07-01</time>
+      <a href="/2016/07/21/css/css/" class="article-date">
+      <time datetime="2016-07-21T03:07:59.286Z" itemprop="datePublished">2016-07-21</time>
 </a>
 
 
@@ -275,10 +284,41 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS背景图片处理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="React-�ʼ�"><a href="#React-�ʼ�" class="headerlink" title="React �ʼ�"></a>React �ʼ�</h1><h3 id="React-�"><a href="#React-�" class="headerlink" title="React �"></a>React �</h3>
+        <p>前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：</p>
+<h4 id="背景透明度问题"><a href="#背景透明度问题" class="headerlink" title="背景透明度问题"></a>背景透明度问题</h4><p> 1 背景透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-color:transparent;背景透明</div></pre></td></tr></table></figure></p>
+<p> 2 背景颜色透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）</div><div class="line">background: hsla(0,100%,50%,0.5);// HSLA（色调、饱和、亮度、透明度）</div></pre></td></tr></table></figure></p>
+<p> 3 单独设置透明度<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opacity:0.7;//透明度</div></pre></td></tr></table></figure></p>
+<h4 id="背景样式处理"><a href="#背景样式处理" class="headerlink" title="背景样式处理"></a>背景样式处理</h4><p> 背景平铺<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">background-image: url(../img/homepage.jpg);//图片</div><div class="line">background-repeat: no-repeat;  //不可重复</div><div class="line">background-clip: border-box;  //不可以在边框中显示</div><div class="line">background-color: #F4BF31; //颜色</div><div class="line">background-size: cover;//铺满</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -286,13 +326,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/01/new/"></a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">����</a></p>
-        <p><span>发布时间:</span>2016-07-01, 10:59:55</p>
-        <p><span>最后更新:</span>2016-07-01, 11:00:54</p>
+        <p><span>本文标题:</span><a href="/2016/07/21/css/css/">CSS背景图片处理</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
+        <p><span>发布时间:</span>2016-07-21, 11:07:59</p>
+        <p><span>最后更新:</span>2016-07-26, 19:05:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/01/new/" title="">https://qingege.github.io/2016/07/01/new/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/01/new/　　作者: ����" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/21/css/css/" title="CSS背景图片处理">https://qingege.github.io/2016/07/21/css/css/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/21/css/css/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -304,10 +344,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/07/21/react/react_creation/">
+                    React.js  WebPack  Babel ES6 React-router Redux 项目搭建
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/07/01/hello-world/">
-                    Hello World
+                <a href="/2016/07/01/heco/">
+                    webpack笔记
                 </a>
             </div>
         
@@ -317,21 +363,27 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React-�ʼ�"><span class="toc-number">1.</span> <span class="toc-text">React �ʼ�</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-�"><span class="toc-number">1.0.1.</span> <span class="toc-text">React �</span></a></li></ol></li></ol></li></ol>
-</div>
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景透明度问题"><span class="toc-number">1.</span> <span class="toc-text">背景透明度问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#背景样式处理"><span class="toc-number">2.</span> <span class="toc-text">背景样式处理</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-<script>
-    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-</script>
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -349,7 +401,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"CSS背景图片处理　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -369,19 +421,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/07/21/react/react_creation/" title="上一篇: React.js  WebPack  Babel ES6 React-router Redux 项目搭建">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/07/01/hello-world/" title="下一篇: Hello World">
+            <a href="/2016/07/01/heco/" title="下一篇: webpack笔记">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/new/">new</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/heco/">webpack笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/new/">react笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/hello-world/">Hello World</a></li></ul>
 
 
 
@@ -395,7 +449,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016 ����
+                2016 李钦
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
@@ -405,18 +459,16 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
                 
-                    <span>, </span>
+                    <span>| </span>
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -474,6 +526,7 @@
         }
     
 </script>
+
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
   </div>

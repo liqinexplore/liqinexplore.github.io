@@ -15,28 +15,19 @@
 
 
 
-<meta name="description" content="categories:
-
-Diarytags:
-PS3
-Gameswebpack是个事哈哈哈哈">
+<meta name="description" content="React.cloneElement参数：TYPE（ReactElement），[PROPS（object）]，[CHILDREN（ReactElement）]克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。
+通过React.cloneElement实现prop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack笔记">
-<meta property="og:url" content="https://qingege.github.io/2016/07/01/heco/index.html">
+<meta property="og:title" content="react.js 组件之间state数据的传值">
+<meta property="og:url" content="https://qingege.github.io/2016/07/26/react/react_data/index.html">
 <meta property="og:site_name" content="LQ_Blog">
-<meta property="og:description" content="categories:
-
-Diarytags:
-PS3
-Gameswebpack是个事哈哈哈哈">
-<meta property="og:updated_time" content="2016-07-21T02:35:26.748Z">
+<meta property="og:description" content="React.cloneElement参数：TYPE（ReactElement），[PROPS（object）]，[CHILDREN（ReactElement）]克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。
+通过React.cloneElement实现prop">
+<meta property="og:updated_time" content="2016-07-26T09:53:19.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack笔记">
-<meta name="twitter:description" content="categories:
-
-Diarytags:
-PS3
-Gameswebpack是个事哈哈哈哈">
+<meta name="twitter:title" content="react.js 组件之间state数据的传值">
+<meta name="twitter:description" content="React.cloneElement参数：TYPE（ReactElement），[PROPS（object）]，[CHILDREN（ReactElement）]克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。
+通过React.cloneElement实现prop">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -68,7 +59,7 @@ Gameswebpack是个事哈哈哈哈">
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>webpack笔记 | LQ_Blog</title>
+<title>react.js 组件之间state数据的传值 | LQ_Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -275,11 +266,11 @@ Gameswebpack是个事哈哈哈哈">
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-heco" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-react/react_data" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/01/heco/" class="article-date">
-      <time datetime="2016-07-01T08:44:29.561Z" itemprop="datePublished">2016-07-01</time>
+      <a href="/2016/07/26/react/react_data/" class="article-date">
+      <time datetime="2016-07-26T09:43:58.362Z" itemprop="datePublished">2016-07-26</time>
 </a>
 
 
@@ -294,7 +285,7 @@ Gameswebpack是个事哈哈哈哈">
         
   
     <h1 class="article-title" itemprop="name">
-      webpack笔记
+      react.js 组件之间state数据的传值
     </h1>
   
 
@@ -302,8 +293,16 @@ Gameswebpack是个事哈哈哈哈">
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-router/">React-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-js/">React.js</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -311,12 +310,14 @@ Gameswebpack是个事哈哈哈哈">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>categories:</p>
-<ul>
-<li>Diary<br>tags:</li>
-<li>PS3</li>
-<li>Games<h3 id="webpack是个事"><a href="#webpack是个事" class="headerlink" title="webpack是个事"></a>webpack是个事</h3><h6 id="哈哈哈哈"><a href="#哈哈哈哈" class="headerlink" title="哈哈哈哈"></a>哈哈哈哈</h6></li>
-</ul>
+        <h2 id="React-cloneElement"><a href="#React-cloneElement" class="headerlink" title="React.cloneElement"></a>React.cloneElement</h2><p>参数：TYPE（ReactElement），[PROPS（object）]，[CHILDREN（ReactElement）]<br>克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），<br>新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。</p>
+<p>通过React.cloneElement实现props数据之间的传值</p>
+<h4 id="在父的组件中，将两个子组件的data传递出来"><a href="#在父的组件中，将两个子组件的data传递出来" class="headerlink" title="在父的组件中，将两个子组件的data传递出来"></a>在父的组件中，将两个子组件的data传递出来</h4> <a id="more"></a>
+<p> 首先父组件定义header和main两个组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Circle extends Component &#123;</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props);</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">       let &#123; header, main &#125; = this.props</div><div class="line">       //此处非不得以判断层级，进而达到底层面板不展示的方式。理论上应该是有其他方式，去设置父组件属性。</div><div class="line">      content = ( &lt;div className=&quot;content_group&quot;&gt;</div><div class="line">           &#123;(!!header) ? (&lt;div className=&quot;content_header&quot;&gt;</div><div class="line">               &#123;header &amp;&amp; React.cloneElement(header, &#123;brodcast: (message)=&gt;main.props.getNotify(message)&#125;)&#125;</div><div class="line">           &lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">           &#123;(!!main) ? (&lt;div className=&quot;content_main&quot;&gt;&#123;main&#125;&lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">         </div><div class="line">       &lt;/div&gt;</div><div class="line">       ）</div><div class="line">                       </div><div class="line">               return (</div><div class="line">                   &lt;div&gt;</div><div class="line">                           &#123;content&#125;</div><div class="line">                   &lt;/div&gt;</div><div class="line">               )</div><div class="line">       </div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = Circle;</div></pre></td></tr></table></figure></p>
+<h3 id="在header-jsx-中赋值。在center-jsx中拿值"><a href="#在header-jsx-中赋值。在center-jsx中拿值" class="headerlink" title="在header.jsx 中赋值。在center.jsx中拿值"></a>在header.jsx 中赋值。在center.jsx中拿值</h3><h4 id="header-jsx"><a href="#header-jsx" class="headerlink" title="header.jsx"></a>header.jsx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class header extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">            super(props);</div><div class="line">             this.handleSubmit = this.handleSubmit.bind(this);</div><div class="line">            this.state = &#123;</div><div class="line">                circleID: &quot;1&quot;,</div><div class="line">                begin_time: &quot;2015.01.01&quot;,</div><div class="line">                title: &quot;内容&quot;,</div><div class="line">            &#125;;</div><div class="line">       &#125;</div><div class="line">       handleSubmit()&#123;</div><div class="line">          let Data = this.state;</div><div class="line">          this.props.brodcast(Data);</div><div class="line">       &#125;</div><div class="line">    render()&#123;</div><div class="line">        return(</div><div class="line">            &lt;a onClick=&#123;this.handleSubmit&#125;&gt;搜索&lt;/a&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">module.exports = header;</div></pre></td></tr></table></figure>
+<p>###上面通过父组件中的this.props.brodcast()将值传入，在content.jsx接受值</p>
+<h4 id="content-jsx"><a href="#content-jsx" class="headerlink" title="content.jsx"></a>content.jsx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var faThis = null;</div><div class="line">  class content extends Component &#123;</div><div class="line">      constructor(props) &#123;</div><div class="line">              super(props);</div><div class="line">            faThis = setTimeout(()=&gt; &#123;</div><div class="line">                faThis = this;</div><div class="line">                &#125;);</div><div class="line">              this.state = &#123;</div><div class="line">                  newdata: [],</div><div class="line">              &#125;;</div><div class="line">         &#125;</div><div class="line">         //获取传递过来的请求参数</div><div class="line">             getNotify(data) &#123;</div><div class="line">                 //将参数传递给后台。</div><div class="line">                 faThis.state.newdata = data;</div><div class="line">                faThis.forceUpdate();</div><div class="line">             &#125;</div><div class="line">      render()&#123;</div><div class="line">          return(</div><div class="line">              &lt;span&gt;&#123;this.state.newdata.title&#125;&lt;span&gt;</div><div class="line">          )</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  content.defaultProps = &#123;</div><div class="line">      getNotify: content.prototype.getNotify</div><div class="line">  &#125;;</div><div class="line">  module.exports = content;</div></pre></td></tr></table></figure>
+<p>实现了 data之前传值，其中重新定义this为faThis是为了防止跟自身组件冲突。</p>
 
       
     </div>
@@ -325,13 +326,13 @@ Gameswebpack是个事哈哈哈哈">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/01/heco/">webpack笔记</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/26/react/react_data/">react.js 组件之间state数据的传值</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
-        <p><span>发布时间:</span>2016-07-01, 16:44:29</p>
-        <p><span>最后更新:</span>2016-07-21, 10:35:26</p>
+        <p><span>发布时间:</span>2016-07-26, 17:43:58</p>
+        <p><span>最后更新:</span>2016-07-26, 17:53:19</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/01/heco/" title="webpack笔记">https://qingege.github.io/2016/07/01/heco/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/01/heco/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/26/react/react_data/" title="react.js 组件之间state数据的传值">https://qingege.github.io/2016/07/26/react/react_data/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/26/react/react_data/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -343,16 +344,10 @@ Gameswebpack是个事哈哈哈哈">
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/21/css/css/">
-                    CSS背景图片处理
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/07/01/new/">
-                    react笔记
+                <a href="/2016/07/26/react/react_module/">
+                    React 组件之间的传值
                 </a>
             </div>
         
@@ -364,7 +359,7 @@ Gameswebpack是个事哈哈哈哈">
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack是个事"><span class="toc-number">1.</span> <span class="toc-text">webpack是个事</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#哈哈哈哈"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">哈哈哈哈</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React-cloneElement"><span class="toc-number">1.</span> <span class="toc-text">React.cloneElement</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在父的组件中，将两个子组件的data传递出来"><span class="toc-number">1.0.1.</span> <span class="toc-text">在父的组件中，将两个子组件的data传递出来</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在header-jsx-中赋值。在center-jsx中拿值"><span class="toc-number">1.1.</span> <span class="toc-text">在header.jsx 中赋值。在center.jsx中拿值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#header-jsx"><span class="toc-number">1.1.1.</span> <span class="toc-text">header.jsx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content-jsx"><span class="toc-number">1.1.2.</span> <span class="toc-text">content.jsx</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -400,7 +395,7 @@ Gameswebpack是个事哈哈哈哈">
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"webpack笔记　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"react.js 组件之间state数据的传值　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -420,15 +415,13 @@ Gameswebpack是个事哈哈哈哈">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/21/css/css/" title="上一篇: CSS背景图片处理">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/07/01/new/" title="下一篇: react笔记">
+            <a href="/2016/07/26/react/react_module/" title="下一篇: React 组件之间的传值">
                 <i class="fa fa-angle-right"></i>
             </a>
         
