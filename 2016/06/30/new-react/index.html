@@ -72,12 +72,14 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -106,6 +108,13 @@
         <p class="header-subtitle">Way to explore</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -170,9 +179,9 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:liqintiantai@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
@@ -248,9 +257,9 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:liqintiantai@163.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
@@ -318,21 +327,27 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React-笔记"><span class="toc-number">1.</span> <span class="toc-text">React 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#react-基本知识"><span class="toc-number">1.0.1.</span> <span class="toc-text">react 基本知识</span></a></li></ol></li></ol></li></ol>
-</div>
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React-笔记"><span class="toc-number">1.</span> <span class="toc-text">React 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#react-基本知识"><span class="toc-number">1.0.1.</span> <span class="toc-text">react 基本知识</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-<script>
-    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-</script>
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -406,18 +421,16 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
                 
-                    <span>, </span>
+                    <span>| </span>
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -475,6 +488,7 @@
         }
     
 </script>
+
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
   </div>
