@@ -16,21 +16,18 @@
 
 
 <meta name="description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
-Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()
-redux是管理State的">
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redux 基础搭建和功能介绍">
 <meta property="og:url" content="https://qingege.github.io/2016/07/27/react/rudux/rudux_demo/index.html">
 <meta property="og:site_name" content="LQ_Blog">
 <meta property="og:description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
-Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()
-redux是管理State的">
-<meta property="og:updated_time" content="2016-07-27T07:42:46.698Z">
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
+<meta property="og:updated_time" content="2016-07-27T08:14:41.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux 基础搭建和功能介绍">
 <meta name="twitter:description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
-Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()
-redux是管理State的">
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -194,7 +191,7 @@ redux是管理State的">
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
                     </div>
                 </section>
                 
@@ -315,6 +312,7 @@ redux是管理State的">
           
         <p>state        ———————————&gt;store &lt;———————–Action<br>（数据）                 储存       （仓库）      改变            （触发）</p>
 <p>Action 的组成<br>                (state,action)=&gt;state  的纯函数<br>  store.dispatch()</p>
+<a id="more"></a>
 <h3 id="redux是管理State的一个东东，所有State都需要经过redux来操作。"><a href="#redux是管理State的一个东东，所有State都需要经过redux来操作。" class="headerlink" title="redux是管理State的一个东东，所有State都需要经过redux来操作。"></a>redux是管理State的一个东东，所有State都需要经过redux来操作。</h3><h4 id="redux中有三个基本概念，Action，Reducer，Store。"><a href="#redux中有三个基本概念，Action，Reducer，Store。" class="headerlink" title="redux中有三个基本概念，Action，Reducer，Store。"></a>redux中有三个基本概念，Action，Reducer，Store。</h4><h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Actions 是把数据从应用传到 store 的有效载荷。它是 store 数据的唯一来源。用法是通过 store.dispatch() 把 action 传到 store。</p>
 <p>Action 有两个作用。<br>用Action来分辨具体的执行动作。比如是create 还是delete？或者是update？<br>操作数据首先得有数据。比如添加数据得有数据，删除数据得有ID。。action就是存这些数据的地方<br>（我的理解：Action 只是执行操作这些数据的动作，就是只下达命令（如：去改变数据））<br>Reducer</p>
 <p>Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。这是 reducer 要做的事情。</p>
@@ -383,8 +381,7 @@ redux是管理State的">
 <p>这是一部分核心源码：</p>
 <p>function bindActionCreator(actionCreator, dispatch){return(…args)=&gt; dispatch(actionCreator(…args));}// mapValues： map第一个参数的每一项，返回对象，key是key，value是第二个参数返回的数据/*</p>
 <ul>
-<li>mapValues： map第一个参数的每一项，返回对象，key是key，value是第二个参数返回的数据</li>
-<li></li>
+<li>mapValues： map第一个参数的每一项，返回对象，key是key，value是第二个参数返回的数据<br>*</li>
 <li>@param actionCreators</li>
 <li>@param dispatch<br>*</li>
 <li>@return {actionKey: (…args) =&gt; dispatch(actionCreator(…args))}<br>*/exportdefaultfunction bindActionCreators(actionCreators, dispatch){return mapValues(actionCreators, actionCreator =&gt;<br> bindActionCreator(actionCreator, dispatch));}<br>   ```<br>可以看到，bindActionCreators 执行这个方法之后，它把 actionCreators 的每一项的 key 不变，value 变成 dispatch(actionCreator(…args)) 这玩意，这表示， actionCreator 已经变成了一个可执行的方法，执行这个方法，就会执行 dispatch 更新数据。。</li>
@@ -400,7 +397,7 @@ redux是管理State的">
         <p><span>本文标题:</span><a href="/2016/07/27/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
         <p><span>发布时间:</span>2016-07-27, 15:22:02</p>
-        <p><span>最后更新:</span>2016-07-27, 15:42:46</p>
+        <p><span>最后更新:</span>2016-07-27, 16:14:41</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/27/react/rudux/rudux_demo/" title="Redux 基础搭建和功能介绍">https://qingege.github.io/2016/07/27/react/rudux/rudux_demo/</a>
             <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/27/react/rudux/rudux_demo/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -414,6 +411,12 @@ redux是管理State的">
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/07/27/react/fetch/">
+                    Fetch 请求
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -486,7 +489,9 @@ redux是管理State的">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/07/27/react/fetch/" title="上一篇: Fetch 请求">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -498,7 +503,7 @@ redux是管理State的">
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/heco/">webpack笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/new/">react笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/vue/vue/">Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/JavaScript/js_random/">js 随机数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/react/devtool/">devtool 安装应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/react/propTypes/">React组件属性类型（propTypes）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/react/fetch/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/heco/">heco</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/new/">new</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/hello-world/">fullPage</a></li></ul>
 
 
 
