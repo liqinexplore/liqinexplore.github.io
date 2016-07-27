@@ -20,18 +20,18 @@
 
 <meta name="description" content="海纳百川">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LQ Blog">
+<meta property="og:title" content="LQ_Blog">
 <meta property="og:url" content="https://qingege.github.io/index.html">
-<meta property="og:site_name" content="LQ Blog">
+<meta property="og:site_name" content="LQ_Blog">
 <meta property="og:description" content="海纳百川">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LQ Blog">
+<meta name="twitter:title" content="LQ_Blog">
 <meta name="twitter:description" content="海纳百川">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="LQ Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="LQ_Blog" type="application/atom+xml">
 
 
 
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>LQ Blog</title>
+<title>LQ_Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -81,9 +81,7 @@
 </script>
 
 
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
+    <script> yiliaConfig.jquery_ui = [false]; </script>
 
 
 
@@ -187,8 +185,6 @@
                             
                                 <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
                             
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -196,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
                     </div>
                 </section>
                 
@@ -265,8 +261,6 @@
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
                         </ul>
             </nav>
         </header>                
@@ -275,11 +269,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-new-react" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-react/react_data" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/30/new-react/" class="article-date">
-      <time datetime="2016-06-30T14:29:06.460Z" itemprop="datePublished">2016-06-30</time>
+      <a href="/2016/07/26/react/react_data/" class="article-date">
+      <time datetime="2016-07-26T09:43:58.362Z" itemprop="datePublished">2016-07-26</time>
 </a>
 
 
@@ -290,10 +284,303 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/26/react/react_data/">react.js 组件之间state数据的传值</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="React-笔记"><a href="#React-笔记" class="headerlink" title="React 笔记"></a>React 笔记</h1><h3 id="react-基本知识"><a href="#react-基本知识" class="headerlink" title="react 基本知识"></a>react 基本知识</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react 介绍</div></pre></td></tr></table></figure>
+              <h2 id="React-cloneElement"><a href="#React-cloneElement" class="headerlink" title="React.cloneElement"></a>React.cloneElement</h2><p>参数：TYPE（ReactElement），[PROPS（object）]，[CHILDREN（ReactElement）]<br>克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），<br>新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。</p>
+<p>通过React.cloneElement实现props数据之间的传值</p>
+<h4 id="在父的组件中，将两个子组件的data传递出来"><a href="#在父的组件中，将两个子组件的data传递出来" class="headerlink" title="在父的组件中，将两个子组件的data传递出来"></a>在父的组件中，将两个子组件的data传递出来</h4>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-router/">React-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-js/">React.js</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/07/26/react/react_data/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-react/react_module" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/26/react/react_module/" class="article-date">
+      <time datetime="2016-07-26T09:43:17.686Z" itemprop="datePublished">2016-07-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/26/react/react_module/">React 组件之间的传值</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="React-父组件和子组件之间的传值"><a href="#React-父组件和子组件之间的传值" class="headerlink" title="React 父组件和子组件之间的传值"></a>React 父组件和子组件之间的传值</h3><h4 id="主要是通过-this-props之间传值"><a href="#主要是通过-this-props之间传值" class="headerlink" title="主要是通过 this.props之间传值"></a>主要是通过 this.props之间传值</h4><p> <em>输出语句:export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。<br>使用export命令定义了模块的对外接口以后，其他JS文件就可以通过import命令加载这个模块（文件）。
+</em><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-router/">React-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-js/">React.js</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/07/26/react/react_module/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-react/react_creation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/21/react/react_creation/" class="article-date">
+      <time datetime="2016-07-21T06:01:57.403Z" itemprop="datePublished">2016-07-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/21/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">下面来详细介绍一下</div><div class="line"> React.js  WebPack  Babel ES6 React-router Redux 项目搭建</div></pre></td></tr></table></figure>
+<h1 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1 创建项目"></a>1 创建项目</h1><p>首先 搭建一个这样的结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">--your project</div><div class="line">  |--app</div><div class="line">    |--components</div><div class="line">      |--productBox.jsx</div><div class="line">    |--main.js</div><div class="line">  |--build</div><div class="line">    |--index.html</div><div class="line">    |--bundle.js(该文件是webpack打包后生成的)</div></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a><a class="article-category-link" href="/categories/React-js/Webpack/">Webpack</a><a class="article-category-link" href="/categories/React-js/Webpack/router/">router</a><a class="article-category-link" href="/categories/React-js/Webpack/router/Redux/">Redux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Babel/">Babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-router/">React-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-js/">React.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebPack/">WebPack</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/07/21/react/react_creation/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-css/css" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/21/css/css/" class="article-date">
+      <time datetime="2016-07-21T03:07:59.286Z" itemprop="datePublished">2016-07-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/21/css/css/">CSS背景图片处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：</p>
+<h4 id="背景透明度问题"><a href="#背景透明度问题" class="headerlink" title="背景透明度问题"></a>背景透明度问题</h4><p> 1 背景透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-color:transparent;背景透明</div></pre></td></tr></table></figure></p>
+<p> 2 背景颜色透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）</div><div class="line">background: hsla(0,100%,50%,0.5);// HSLA（色调、饱和、亮度、透明度）</div></pre></td></tr></table></figure></p>
+<p> 3 单独设置透明度<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opacity:0.7;//透明度</div></pre></td></tr></table></figure></p>
+<h4 id="背景样式处理"><a href="#背景样式处理" class="headerlink" title="背景样式处理"></a>背景样式处理</h4><p> 背景平铺<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">background-image: url(../img/homepage.jpg);//图片</div><div class="line">background-repeat: no-repeat;  //不可重复</div><div class="line">background-clip: border-box;  //不可以在边框中显示</div><div class="line">background-color: #F4BF31; //颜色</div><div class="line">background-size: cover;//铺满</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-heco" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/heco/" class="article-date">
+      <time datetime="2016-07-01T08:44:29.561Z" itemprop="datePublished">2016-07-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/heco/">webpack笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>categories:</p>
+<ul>
+<li>Diary<br>tags:</li>
+<li>PS3</li>
+<li>Games<h3 id="webpack是个事"><a href="#webpack是个事" class="headerlink" title="webpack是个事"></a>webpack是个事</h3><h6 id="哈哈哈哈"><a href="#哈哈哈哈" class="headerlink" title="哈哈哈哈"></a>哈哈哈哈</h6></li>
+</ul>
 
       
     </div>
@@ -320,11 +607,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-new" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/30/hello-world/" class="article-date">
-      <time datetime="2016-06-30T13:09:05.456Z" itemprop="datePublished">2016-06-30</time>
+      <a href="/2016/07/01/new/" class="article-date">
+      <time datetime="2016-07-01T02:59:55.160Z" itemprop="datePublished">2016-07-01</time>
 </a>
 
 
@@ -339,7 +626,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/30/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/07/01/new/">react笔记</a>
     </h1>
   
 
@@ -349,16 +636,72 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="动手术的冯绍峰的"><a href="#动手术的冯绍峰的" class="headerlink" title="动手术的冯绍峰的"></a>动手术的冯绍峰的</h1><h2 id="是的发的是水电费"><a href="#是的发的是水电费" class="headerlink" title="是的发的是水电费"></a>是的发的是水电费</h2><h3 id="webpack是个事"><a href="#webpack是个事" class="headerlink" title="webpack是个事"></a>webpack是个事</h3><h4 id="大多数的所得税"><a href="#大多数的所得税" class="headerlink" title="大多数的所得税"></a>大多数的所得税</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a><a class="article-category-link" href="/categories/前端/css/">css</a>
+    </div>
 
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/hello-world/" class="article-date">
+      <time datetime="2016-07-01T01:24:54.193Z" itemprop="datePublished">2016-07-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3>
+          
       
     </div>
     
@@ -367,6 +710,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2016/07/01/hello-world/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
