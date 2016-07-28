@@ -192,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
                     </div>
                 </section>
                 
@@ -268,6 +268,74 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-css/css" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/21/css/css/" class="article-date">
+      <time datetime="2016-07-21T03:07:59.286Z" itemprop="datePublished">2016-07-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/21/css/css/">CSS背景图片处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前端设计页面时，经常会遇到背景图片处理的问题，我们来介绍一下常见的几种背景图片的处理方法：</p>
+<h4 id="背景透明度问题"><a href="#背景透明度问题" class="headerlink" title="背景透明度问题"></a>背景透明度问题</h4><p> 1 背景透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-color:transparent;背景透明</div></pre></td></tr></table></figure></p>
+<p> 2 背景颜色透明<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background: rgba(255,127,80,0.3);// RGBA（红、绿、蓝、透明度）</div><div class="line">background: hsla(0,100%,50%,0.5);// HSLA（色调、饱和、亮度、透明度）</div></pre></td></tr></table></figure></p>
+<p> 3 单独设置透明度<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opacity:0.7;//透明度</div></pre></td></tr></table></figure></p>
+<h4 id="背景样式处理"><a href="#背景样式处理" class="headerlink" title="背景样式处理"></a>背景样式处理</h4><p> 背景平铺<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">background-image: url(../img/homepage.jpg);//图片</div><div class="line">background-repeat: no-repeat;  //不可重复</div><div class="line">background-clip: border-box;  //不可以在边框中显示</div><div class="line">background-color: #F4BF31; //颜色</div><div class="line">background-size: cover;//铺满</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-heco" class="article article-type-post" itemscope itemprop="blogPost">
   
