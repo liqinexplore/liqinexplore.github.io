@@ -15,25 +15,22 @@
 
 
 
-<meta name="description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 - 字符串和json对象之间的转换
+<meta name="description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 字符串和json对象之间的转换
 
-parse从字符串中解析出json对象
-12345678//数组var str = &amp;apos;&amp;#123;&amp;quot;name&amp;quot;:&amp;quot;huangxiaojian&amp;quot;,&amp;quot;age&amp;quot;:&amp;quot;23&amp;quot;&amp;#125;&amp;apos;结果：    JSON.p">
+parse从字符串中解析出json对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript总结">
 <meta property="og:url" content="https://qingege.github.io/2016/07/28/JavaScript/js_zong/index.html">
 <meta property="og:site_name" content="LQ_Blog">
-<meta property="og:description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 - 字符串和json对象之间的转换
+<meta property="og:description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 字符串和json对象之间的转换
 
-parse从字符串中解析出json对象
-12345678//数组var str = &amp;apos;&amp;#123;&amp;quot;name&amp;quot;:&amp;quot;huangxiaojian&amp;quot;,&amp;quot;age&amp;quot;:&amp;quot;23&amp;quot;&amp;#125;&amp;apos;结果：    JSON.p">
-<meta property="og:updated_time" content="2016-07-28T10:58:46.308Z">
+parse从字符串中解析出json对象">
+<meta property="og:updated_time" content="2016-07-28T11:03:55.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript总结">
-<meta name="twitter:description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 - 字符串和json对象之间的转换
+<meta name="twitter:description" content="js 常用知识总结下面总结一下我们在项目中常用的程序介绍 字符串和json对象之间的转换
 
-parse从字符串中解析出json对象
-12345678//数组var str = &amp;apos;&amp;#123;&amp;quot;name&amp;quot;:&amp;quot;huangxiaojian&amp;quot;,&amp;quot;age&amp;quot;:&amp;quot;23&amp;quot;&amp;#125;&amp;apos;结果：    JSON.p">
+parse从字符串中解析出json对象">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -316,18 +313,16 @@ parse从字符串中解析出json对象
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="js-常用知识总结"><a href="#js-常用知识总结" class="headerlink" title="js 常用知识总结"></a>js 常用知识总结</h3><p>下面总结一下我们在项目中常用的程序介绍<br><strong> - 字符串和json对象之间的转换</strong></p>
+        <h3 id="js-常用知识总结"><a href="#js-常用知识总结" class="headerlink" title="js 常用知识总结"></a>js 常用知识总结</h3><p>下面总结一下我们在项目中常用的程序介绍<br><strong> 字符串和json对象之间的转换</strong></p>
 <ul>
-<li>parse从字符串中解析出json对象</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//数组</div><div class="line">var str = &apos;&#123;&quot;name&quot;:&quot;huangxiaojian&quot;,&quot;age&quot;:&quot;23&quot;&#125;&apos;</div><div class="line">结果：</div><div class="line">    JSON.parse(str)</div><div class="line">    Object</div><div class="line">    age: &quot;23&quot;</div><div class="line">    name: &quot;huangxiaojian&quot;</div><div class="line">    __proto__: Object</div></pre></td></tr></table></figure>
-<p>  <strong>注意：单引号写在{}外，每个属性名都必须用双引号，否则会抛出异常。</strong></p>
-<ul>
-<li>stringify()用于从一个对象解析出字符串，<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//json对象</div><div class="line">    var a = &#123;a:1,b:2&#125;</div><div class="line">    结果：</div><div class="line">    JSON.stringify(a)</div><div class="line">    //字符串</div><div class="line">    &quot;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&quot;</div></pre></td></tr></table></figure>
+<li>parse从字符串中解析出json对象<a id="more"></a>
 </li>
 </ul>
-</li>
-</ul>
-<ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//数组</div><div class="line">var str = &apos;&#123;&quot;name&quot;:&quot;huangxiaojian&quot;,&quot;age&quot;:&quot;23&quot;&#125;&apos;</div><div class="line">结果：</div><div class="line">    JSON.parse(str)</div><div class="line">    Object</div><div class="line">    age: &quot;23&quot;</div><div class="line">    name: &quot;huangxiaojian&quot;</div><div class="line">    __proto__: Object</div></pre></td></tr></table></figure>
+<pre><code>**注意：单引号写在{}外，每个属性名都必须用双引号，否则会抛出异常。**
+- stringify()用于从一个对象解析出字符串，
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//json对象</div><div class="line">    var a = &#123;a:1,b:2&#125;</div><div class="line">    结果：</div><div class="line">    JSON.stringify(a)</div><div class="line">    //字符串</div><div class="line">    &quot;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&quot;</div></pre></td></tr></table></figure>
+</code></pre><ol>
 <li><p>遍历数组 (同时也是对象遍历属性的方法)</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [1, 2, 3];</div><div class="line">for (x in a) &#123;</div><div class="line">console.log(x);</div><div class="line">&#125;</div><div class="line">结果 0 1 2</div></pre></td></tr></table></figure>
 </li>
@@ -385,7 +380,7 @@ parse从字符串中解析出json对象
         <p><span>本文标题:</span><a href="/2016/07/28/JavaScript/js_zong/">javascript总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
         <p><span>发布时间:</span>2016-07-28, 09:23:49</p>
-        <p><span>最后更新:</span>2016-07-28, 18:58:46</p>
+        <p><span>最后更新:</span>2016-07-28, 19:03:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/28/JavaScript/js_zong/" title="javascript总结">https://qingege.github.io/2016/07/28/JavaScript/js_zong/</a>
             <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2016/07/28/JavaScript/js_zong/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
