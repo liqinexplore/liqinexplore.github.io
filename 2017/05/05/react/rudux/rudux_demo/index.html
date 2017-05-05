@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="李钦" />
+
+
+
+<meta name="description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux 基础搭建和功能介绍">
+<meta property="og:url" content="https://qingege.github.io/2017/05/05/react/rudux/rudux_demo/index.html">
+<meta property="og:site_name" content="LQ_Blog">
+<meta property="og:description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
+<meta property="og:updated_time" content="2017-05-05T09:20:01.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redux 基础搭建和功能介绍">
+<meta name="twitter:description" content="state        ———————————&amp;gt;store &amp;lt;———————–Action（数据）                 储存       （仓库）      改变            （触发）
+Action 的组成                (state,action)=&amp;gt;state  的纯函数  store.dispatch()">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="LQ_Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Redux 基础搭建和功能介绍 | LQ_Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">李钦</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Way to explore</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">李钦</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">李钦</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Way to explore</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-react/rudux/rudux_demo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/05/react/rudux/rudux_demo/" class="article-date">
+      <time datetime="2017-05-05T09:20:01.506Z" itemprop="datePublished">2017-05-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redux 基础搭建和功能介绍
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a><a class="article-category-link" href="/categories/React-js/Webpack/">Webpack</a><a class="article-category-link" href="/categories/React-js/Webpack/Redux/">Redux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>state        ———————————&gt;store &lt;———————–Action<br>（数据）                 储存       （仓库）      改变            （触发）</p>
+<p>Action 的组成<br>                (state,action)=&gt;state  的纯函数<br>  store.dispatch()</p>
+<a id="more"></a>
+<h3 id="redux是管理State的一个东东，所有State都需要经过redux来操作。"><a href="#redux是管理State的一个东东，所有State都需要经过redux来操作。" class="headerlink" title="redux是管理State的一个东东，所有State都需要经过redux来操作。"></a>redux是管理State的一个东东，所有State都需要经过redux来操作。</h3><h4 id="redux中有三个基本概念，Action，Reducer，Store。"><a href="#redux中有三个基本概念，Action，Reducer，Store。" class="headerlink" title="redux中有三个基本概念，Action，Reducer，Store。"></a>redux中有三个基本概念，Action，Reducer，Store。</h4><h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Actions 是把数据从应用传到 store 的有效载荷。它是 store 数据的唯一来源。用法是通过 store.dispatch() 把 action 传到 store。</p>
+<p>Action 有两个作用。<br>用Action来分辨具体的执行动作。比如是create 还是delete？或者是update？<br>操作数据首先得有数据。比如添加数据得有数据，删除数据得有ID。。action就是存这些数据的地方<br>（我的理解：Action 只是执行操作这些数据的动作，就是只下达命令（如：去改变数据））<br>Reducer</p>
+<p>Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新 state。这是 reducer 要做的事情。</p>
+<p>Action就像leader，告诉我们应该做哪些事，并且给我们提供‘资源（就是上面说的数据）’，真正干活的是苦逼的Reducer。。</p>
+<p>（我的理解：action，只下达命令，告诉了我们怎么操作这些数据，然后让reducer去执行（如：reducer就去执行这个updata动作））</p>
+<h3 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h3><p>一个应用只有一个Store。一个应用只有一个Store。一个应用只有一个Store。<br>重要的事情放在前面说，而且说三遍。。</p>
+<p>上面章节中，我们学会了使用 action 来描述“发生了什么”，和使用 reducers 来根据 action 更新 state 的用法。<br>Store 就是把它们联系到一起的对象。Store 有以下职责：<br>维持应用的 state；</p>
+<ul>
+<li>提供 getState() 方法获取 state；</li>
+<li>提供 dispatch(action) 方法更新 state；</li>
+<li>通过 subscribe(listener) 注册监听器。</li>
+<li>Store提供了一些方法。让我们很方便的操作数据。<br>我们不用关心Reducer和Action是怎么关联在一起的，Store已经帮我们做了这些事。。<br>（我的理解：store是一个仓库，Action发出命令，通过store中的方法（比如dispatch（action））让reducer去执行它，reducer执行完，就更改了store里面的数据。）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> reducer，形式为 (state, action) =&gt; state 的纯函数 下面就是一个 reducer</div><div class="line">functioncounter(state =0, action)&#123;switch(action.type)&#123;case&apos;INCREMENT&apos;:return state +1;case&apos;DECREMENT&apos;:return state -1;default:return state;&#125;&#125;</div><div class="line"></div><div class="line">```</div><div class="line">详细介绍</div><div class="line"></div><div class="line">这部分主要讲解redux如何在项目中使用。</div><div class="line"> #### Action</div><div class="line"></div><div class="line">Action 是一个普通对象。</div><div class="line">（我的理解：Action下达命令是通过type来执行的，type就是执行的动作（如：&#123;type:&apos;add&apos;，Num:&apos;1&apos;&#125; 就是说给Num这个数据，增加一些数据。））</div><div class="line">redux约定 Action 内使用一个字符串类型的 type 字段来表示将要执行的动作。</div></pre></td></tr></table></figure>
+<p>{<br>    type:’ADD_ITEM’}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">除了 type 之外，Action可以存放一些其他的想要操作的数据。例如：</div></pre></td></tr></table></figure></p>
+<p>{<br>    type:’ADD_ITEM’,<br>    text:’我是Berwin’}<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">上面例子表示</div><div class="line">我要创建一条数据</div><div class="line">创建的数据为大概是这样的</div></pre></td></tr></table></figure></p>
+<p>{<br>    text:’我是Berwin’}<br>但在实际应用中，我们需要一个函数来为我们创建Action。这个函数叫做actionCreator。它看起来是这样的：<br>function addItem(text){return{<br>    type: types.ADD_ITEM,<br>    text<br>  }}<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">（我的理解：Action通过type去说明这个动作是干什么的，text就是执行这个动作需要的数据，addItem就是把type这个动作和text这个数据提供出来，他们返回的是一个对象，并没有去执行这个动作，只是把需要的数据提供出来了）</div><div class="line"></div><div class="line">### Reducer</div><div class="line"></div><div class="line">Reducer 是一个普通的回调函数。</div><div class="line">当它被Redux调用的时候会为他传递两个参数State 和 Action。</div><div class="line">Reducer会根据 Action 的type来对旧的 State 进行操作。返回新的State。</div><div class="line">看起来是下面这样的：</div></pre></td></tr></table></figure></p>
+<p>/**</p>
+<ul>
+<li>添加<br>*</li>
+<li>@param {String} 添加的文字<br>*</li>
+<li>@return {Object} 将要添加的数据<br><em>/<br>let createItem = text =&gt;{<br>let time =Date.now();return{<br> id:Math.random().toString(36).split(‘.’).join(‘’),<br> addTime: time,<br> updateTime: time,<br> status:false,<br> text<br>}}/*</em></li>
+<li>Reducer<br>*</li>
+<li>@param State</li>
+<li>@param Action<br>*</li>
+<li>@return new State<br>*/<br>let reducer =(state =[], action)=&gt;{switch(action.type){case ADD_ITEM:return[createItem(action.text),…state]default:return state<br>}}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Reducer很简单，但有三点需要注意</div><div class="line">不要修改 state。</div><div class="line">在 default 情况下返回旧的 state。遇到未知的 action 时，一定要返回旧的 state。</div><div class="line">如果没有旧的State，就返回一个initialState，这很重要！！！</div><div class="line">这是一部分核心源码：</div><div class="line">// currentState 是当前的State，currentReducer 是当前的Reducer</div><div class="line">currentState = currentReducer(currentState, action);</div><div class="line">如果在default或没有传入旧State的情况下不返回旧的State或initialState。。。那么当前的State会被重置为undefined！！</div><div class="line">在使用combineReducers方法时，它也会检测你的函数写的是否标准。如果不标准，那么会抛出一个大大的错误！！</div><div class="line">combineReducers</div><div class="line"></div><div class="line">真正开发项目的时候State会涉及很多功能，在一个Reducer处理所有逻辑会非常混乱，，所以需要拆分成多个小Reducer，每个Reducer只处理它管理的那部分State数据。然后在由一个主rootReducers来专门管理这些小Reducer。</div><div class="line">Redux提供了一个方法 combineReducers 专门来管理这些小Reducer。</div><div class="line">它看起来是下面这样：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>这是一个子Reducer<br>*</li>
+<li>@param State</li>
+<li>@param Action<br>*</li>
+<li>@return new State<br><em>/<br>let list =(state =[], action)=&gt;{switch(action.type){case ADD_ITEM:return[createItem(action.text),…state]default:return state<br>}}// 这是一个简单版的子Reducer，它什么都没有做。<br>let category =(state ={}, action)=&gt; state;/*</em></li>
+<li>这是一个主Reducer<br>*</li>
+<li>@param State</li>
+<li>@param Action<br>*</li>
+<li>@return new State<br>*/<br>let rootReducers = combineReducers({list, category});<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">combineReducers 生成了一个类似于Reducer的函数。为什么是类似于，因为它不是真正的Reducer，它只是一个调用Reducer的函数，只不过它接收的参数与真正的Reducer一模一样~</div><div class="line">** 这是一部分核心源码：**</div><div class="line"></div><div class="line">function combineReducers(reducers)&#123;// 过滤reducers，把非function类型的过滤掉~var finalReducers = pick(reducers,(val)=&gt;typeof val ===&apos;function&apos;);// 一开始我一直以为这个没啥用，后来我发现，这个函数太重要了。它在一开始，就已经把你的State改变了。变成了，Reducer的key 和 Reducer返回的initState组合。var defaultState = mapValues(finalReducers,()=&gt;undefined);returnfunction combination(state = defaultState, action)&#123;// finalReducers 是 reducersvar finalState = mapValues(finalReducers,(reducer, key)=&gt;&#123;// state[key] 是当前Reducer所对应的State，可以理解为当前的Statevar previousStateForKey = state[key];var nextStateForKey = reducer(previousStateForKey, action);return nextStateForKey;&#125;);// finalState 是 Reducer的key和stat的组合。。&#125;&#125;</div><div class="line">从上面的源码可以看出，combineReducers 生成一个类似于Reducer的函数combination。</div><div class="line">当使用combination的时候，combination会把所有子Reducer都执行一遍，子Reducer通过action.type 匹配操作，因为是执行所有子Reducer，所以如果两个子Reducer匹配的action.type是一样的，那么都会成功匹配。</div><div class="line"></div><div class="line">### Store</div><div class="line"></div><div class="line">上面已经介绍什么是Store，以及它是干什么的，这里我就讲讲如何创建Store，以及如何使用Store的方法。</div><div class="line">创建Store非常简单。createStore 有两个参数，Reducer 和 initialState。</div><div class="line">let store = createStore(rootReducers, initialState);</div><div class="line">store有四个方法。</div><div class="line">getState： 获取应用当前State。</div><div class="line">subscribe：添加一个变化监听器。</div><div class="line">dispatch：分发 action。修改State。</div><div class="line">replaceReducer：替换 store 当前用来处理 state 的 reducer。</div><div class="line">常用的是dispatch，这是修改State的唯一途径，使用起来也非常简单，他看起来是这样的~</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>创建Action<br>*</li>
+<li>@param 添加的数据<br>*</li>
+<li>@return {Object} Action<br><em>/function addItem(text){return{<br> type: types.ADD_ITEM,<br> text<br>}}<br>let list =(state =[], action)=&gt;{switch(action.type){case ADD_ITEM:return[createItem(action.text),…state]default:return state<br>}}// 这是一个简单版的子Reducer，它什么都没有做。<br>let category =(state ={}, action)=&gt; state;/*</em></li>
+<li>这是一个主Reducer<br>*</li>
+<li>@param State</li>
+<li>@param Action<br>*</li>
+<li>@return new State<br>*/<br>let rootReducers = combineReducers({list, category});<br>let store = createStore(rootReducers, initialState);<br>// 新增数据<br>store.dispatch(addItem(‘Read the docs’));<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一部分核心源码：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>function dispatch(action){// currentReducer 是当前的Reducer<br>  currentState = currentReducer(currentState, action);</p>
+<p>  listeners.slice().forEach(function(listener){return listener();});return action;}<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">可以看到其实就是把当前的Reducer执行了。并且传入State和Action。</div><div class="line">State哪来的？</div><div class="line">State其实一直在Redux内部保存着。并且每次执行currentReducer都会更新。在上面代码第一行可以看到。</div><div class="line"></div><div class="line"></div><div class="line">（我的理解：</div><div class="line">1  首先创建Action知道需要干什么</div></pre></td></tr></table></figure></p>
+<p>functionaddItem(text){return{<br>    type: types.ADD_ITEM,<br>    text<br>  }}<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2  然后根据Action创建Reducer，去执行怎么干</div></pre></td></tr></table></figure></p>
+<p>let list =(state =[], action)=&gt;{switch(action.type){case ADD_ITEM:return[createItem(action.text),…state]default:return state<br>  }<br>}<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">其中有个合并每个小的Reducer的方法</div><div class="line">combineReducers();</div><div class="line">使用方法如下：</div></pre></td></tr></table></figure></p>
+<p>let list =(state =[], action)=&gt;{switch(action.type){case ADD_ITEM:return[createItem(action.text),…state]default:return state<br>  }}// 这是一个简单版的子Reducer，它什么都没有做。<br>let category =(state ={}, action)=&gt; state;/**</p>
+<ul>
+<li>这是一个主Reducer<br>*</li>
+<li>@param State</li>
+<li>@param Action<br>*</li>
+<li>@return new State<br>*/<br>let rootReducers = combineReducers({list, category});<br>3 利用store的方法来联系起来Action和Reducer ，通过这个dispatch()方法来更新store<br>let store = createStore(rootReducers, initialState);<br>// 新增数据<br>store.dispatch(addItem(‘Read the docs’));<br>）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">React-Redux</div><div class="line"></div><div class="line">Redux 是独立的，它与React没有任何关系。React-Redux是官方提供的一个库，用来结合redux和react的模块。</div><div class="line">React-Redux提供了两个接口Provider、connect。</div><div class="line">Provider</div><div class="line"></div><div class="line">Provider是一个React组件，它的作用是保存store给子组件中的connect使用。</div><div class="line">通过getChildContext方法把store保存到context里。</div><div class="line">后面connect中会通过context读取store。</div><div class="line">它看起来是这个样子的：</div><div class="line">&lt;Providerstore=&#123;this.props.store&#125;&gt;&lt;h1&gt;Hello World!&lt;/h1&gt;&lt;/Provider&gt;</div><div class="line"></div><div class="line">这是一部分核心源码：</div><div class="line"></div><div class="line">getChildContext()&#123;return&#123; store:this.store &#125;&#125;</div><div class="line"></div><div class="line">constructor(props, context)&#123;super(props, context)this.store = props.store</div><div class="line">&#125;</div><div class="line">可以看到，先获取store，然后用 getChildContext 把store保存起来~</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">connect</div><div class="line"></div><div class="line">connect 会把State和dispatch转换成props传递给子组件。它看起来是下面这样的：</div><div class="line">import*as actionCreators from&apos;./actionCreators&apos;import&#123; bindActionCreators &#125;from&apos;redux&apos;function mapStateToProps(state)&#123;return&#123; todos: state.todos &#125;&#125;function mapDispatchToProps(dispatch)&#123;return&#123; actions: bindActionCreators(actionCreators, dispatch)&#125;&#125;exportdefault connect(mapStateToProps, mapDispatchToProps)(Component)</div><div class="line">它会让我们传递一些参数：mapStateToProps，mapDispatchToProps，mergeProps（可不填）和React组件。</div><div class="line">之后这个方法会进行一系列的黑魔法，把state，dispatch转换成props传到React组件上，返回给我们使用。</div><div class="line"></div><div class="line">mapStateToProps：</div><div class="line"></div><div class="line">mapStateToProps 是一个普通的函数。</div><div class="line">当它被connect调用的时候会为它传递一个参数State。</div><div class="line">mapStateToProps需要负责的事情就是 返回需要传递给子组件的State，返回需要传递给子组件的State，返回需要传递给子组件的State，（重要的事情说三遍。。。。）然后connect会拿到返回的数据写入到react组件中，然后组件中就可以通过props读取数据啦~~~~</div><div class="line">它看起来是这样的：</div><div class="line">function mapStateToProps(state)&#123;return&#123; list: state.list &#125;&#125;</div><div class="line">因为state是全局State，里面包含整个项目的所有State，但是我不需要拿到所有State，我只拿到我需要的那部分State即可，所以需要返回 state.list 传递给组件</div><div class="line"></div><div class="line">mapDispatchToProps：</div><div class="line"></div><div class="line">与mapStateToProps很像，mapDispatchToProps也是一个普通的函数。</div><div class="line">当它被connect调用的时候会为它传递一个参数dispatch。</div><div class="line">mapDispatchToProps负责返回一个 dispatchProps</div><div class="line">dispatchProps 是actionCreator的key和dispatch(action)的组合。</div><div class="line">dispatchProps 看起来长这样：</div><div class="line">&#123;</div><div class="line">  addItem:(text)=&gt; dispatch(action)&#125;</div><div class="line">connect 收到这样的数据后，会把它放到React组件上。然后子组件就可以通过props拿到addItem并且使用啦。</div><div class="line">this.props.addItem(&apos;Hello World~&apos;);</div><div class="line">如果觉得复杂，不好理解，，那我用大白话描述一下</div><div class="line">就是通过mapDispatchToProps这个方法，把actionCreator变成方法赋值到props，每当调用这个方法，就会更新State。。。。额，，这么说应该好理解了。。</div><div class="line"></div><div class="line">bindActionCreators：</div><div class="line"></div><div class="line">但如果我有很多个Action，总不能手动一个一个加。Redux提供了一个方法叫 bindActionCreators。</div><div class="line">bindActionCreators 的作用就是将 Actions 和 dispatch 组合起来生成 mapDispatchToProps 需要生成的内容。</div><div class="line">它看起来像这样：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>let actions ={<br>  addItem:(text)=&gt;{<br>    type: types.ADD_ITEM,<br>    text<br>  }}</p>
+<p>bindActionCreators(actions, dispatch);// @return {addItem: (text) =&gt; dispatch({ type: types.ADD_ITEM, text })}</p>
+<p>这是一部分核心源码：</p>
+<p>function bindActionCreator(actionCreator, dispatch){return(…args)=&gt; dispatch(actionCreator(…args));}// mapValues： map第一个参数的每一项，返回对象，key是key，value是第二个参数返回的数据/*</p>
+<ul>
+<li>mapValues： map第一个参数的每一项，返回对象，key是key，value是第二个参数返回的数据<br>*</li>
+<li>@param actionCreators</li>
+<li>@param dispatch<br>*</li>
+<li>@return {actionKey: (…args) =&gt; dispatch(actionCreator(…args))}<br>*/exportdefaultfunction bindActionCreators(actionCreators, dispatch){return mapValues(actionCreators, actionCreator =&gt;<br> bindActionCreator(actionCreator, dispatch));}<br>   ```<br>可以看到，bindActionCreators 执行这个方法之后，它把 actionCreators 的每一项的 key 不变，value 变成 dispatch(actionCreator(…args)) 这玩意，这表示， actionCreator 已经变成了一个可执行的方法，执行这个方法，就会执行 dispatch 更新数据。。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/05/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
+        <p><span>发布时间:</span>2017-05-05, 17:20:01</p>
+        <p><span>最后更新:</span>2017-05-05, 17:20:01</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/05/react/rudux/rudux_demo/" title="Redux 基础搭建和功能介绍">https://qingege.github.io/2017/05/05/react/rudux/rudux_demo/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2017/05/05/react/rudux/rudux_demo/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/05/vue/vue/">
+                    Vue
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/05/react/react_module/">
+                    React 组件之间的传值
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#redux是管理State的一个东东，所有State都需要经过redux来操作。"><span class="toc-number">1.</span> <span class="toc-text">redux是管理State的一个东东，所有State都需要经过redux来操作。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#redux中有三个基本概念，Action，Reducer，Store。"><span class="toc-number">1.1.</span> <span class="toc-text">redux中有三个基本概念，Action，Reducer，Store。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Action"><span class="toc-number"></span> <span class="toc-text">Action</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Store"><span class="toc-number">1.</span> <span class="toc-text">Store</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Redux 基础搭建和功能介绍　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/05/vue/vue/" title="上一篇: Vue">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/05/react/react_module/" title="下一篇: React 组件之间的传值">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/news/">react/rudux/news</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/vue/vue/">Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/propTypes/">React组件属性类型（propTypes）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/fetch/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/devtool/">devtool 安装应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/new/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/hello-world/">fullPage</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/heco/">heco</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zujian/">JavaScript/js_zujian</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zong/">javascript总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_random/">js 随机数</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 李钦
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

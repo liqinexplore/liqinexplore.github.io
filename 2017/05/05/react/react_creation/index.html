@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="李钦" />
+
+
+
+<meta name="description" content="12下面来详细介绍一下 React.js  WebPack  Babel ES6 React-router Redux 项目搭建
+1 创建项目首先 搭建一个这样的结构
+12345678--your project  |--app    |--components      |--productBox.jsx    |--main.js  |--build    |--index.html    |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React.js  WebPack  Babel ES6 React-router Redux 项目搭建">
+<meta property="og:url" content="https://qingege.github.io/2017/05/05/react/react_creation/index.html">
+<meta property="og:site_name" content="LQ_Blog">
+<meta property="og:description" content="12下面来详细介绍一下 React.js  WebPack  Babel ES6 React-router Redux 项目搭建
+1 创建项目首先 搭建一个这样的结构
+12345678--your project  |--app    |--components      |--productBox.jsx    |--main.js  |--build    |--index.html    |">
+<meta property="og:image" content="http://o6znw17tt.bkt.clouddn.com/clipboard.png">
+<meta property="og:updated_time" content="2017-05-05T09:20:01.476Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React.js  WebPack  Babel ES6 React-router Redux 项目搭建">
+<meta name="twitter:description" content="12下面来详细介绍一下 React.js  WebPack  Babel ES6 React-router Redux 项目搭建
+1 创建项目首先 搭建一个这样的结构
+12345678--your project  |--app    |--components      |--productBox.jsx    |--main.js  |--build    |--index.html    |">
+<meta name="twitter:image" content="http://o6znw17tt.bkt.clouddn.com/clipboard.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="LQ_Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>React.js  WebPack  Babel ES6 React-router Redux 项目搭建 | LQ_Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">李钦</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Way to explore</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">李钦</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">李钦</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Way to explore</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-react/react_creation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/05/react/react_creation/" class="article-date">
+      <time datetime="2017-05-05T09:20:01.464Z" itemprop="datePublished">2017-05-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React.js  WebPack  Babel ES6 React-router Redux 项目搭建
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/React-js/">React.js</a><a class="article-category-link" href="/categories/React-js/Webpack/">Webpack</a><a class="article-category-link" href="/categories/React-js/Webpack/router/">router</a><a class="article-category-link" href="/categories/React-js/Webpack/router/Redux/">Redux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Babel/">Babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-router/">React-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-js/">React.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebPack/">WebPack</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">下面来详细介绍一下</div><div class="line"> React.js  WebPack  Babel ES6 React-router Redux 项目搭建</div></pre></td></tr></table></figure>
+<h1 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1 创建项目"></a>1 创建项目</h1><p>首先 搭建一个这样的结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">--your project</div><div class="line">  |--app</div><div class="line">    |--components</div><div class="line">      |--productBox.jsx</div><div class="line">    |--main.js</div><div class="line">  |--build</div><div class="line">    |--index.html</div><div class="line">    |--bundle.js(该文件是webpack打包后生成的)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下面来详细介绍一下</div><div class="line"> React.js  WebPack  Babel ES6 React-router Redux 项目搭建</div></pre></td></tr></table></figure>
+<h1 id="1-创建项目-1"><a href="#1-创建项目-1" class="headerlink" title="1 创建项目"></a>1 创建项目</h1><p>首先 搭建一个这样的结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">--your project</div><div class="line">  |--app</div><div class="line">    |--components</div><div class="line">      |--productBox.jsx</div><div class="line">    |--main.js</div><div class="line">  |--build</div><div class="line">    |--index.html</div><div class="line">    |--bundle.js(该文件是webpack打包后生成的)</div></pre></td></tr></table></figure>
+<h3 id="（1）-创建package-json"><a href="#（1）-创建package-json" class="headerlink" title="（1） 创建package.json"></a>（1） 创建package.json</h3><pre><code>npm init    
+帮助我们跟踪节点模块
+</code></pre><h3 id="（2）-安装react和react-DOM"><a href="#（2）-安装react和react-DOM" class="headerlink" title="（2） 安装react和react DOM"></a>（2） 安装react和react DOM</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install react --save-dev</div><div class="line">或者是 npm install --save-dev react@5.10.0</div><div class="line">npm install react-dom --save-dev</div></pre></td></tr></table></figure>
+<h3 id="3-安装webpack和webpack-dev-server"><a href="#3-安装webpack和webpack-dev-server" class="headerlink" title="(3) 安装webpack和webpack-dev-server"></a>(3) 安装webpack和webpack-dev-server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">需要注意的是 webpack-dev-server 为服务器需要装全局的</div><div class="line">npm install webpack --save-dev</div><div class="line">npm install webpack-dev-server -g</div></pre></td></tr></table></figure>
+<h3 id="（4）安装babel-loader-和下面几个组件"><a href="#（4）安装babel-loader-和下面几个组件" class="headerlink" title="（4）安装babel-loader 和下面几个组件"></a>（4）安装babel-loader 和下面几个组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install babel-loader --save-dev</div><div class="line">npm install babel-core --save-dev</div><div class="line">npm install babel-preset-es2015 --save-dev //支持ES2015</div><div class="line">npm install babel-preset-react --save-dev //支持jsx</div></pre></td></tr></table></figure>
+<h4 id="5-在文件夹app下创建hello-jsx"><a href="#5-在文件夹app下创建hello-jsx" class="headerlink" title="(5) 在文件夹app下创建hello.jsx"></a>(5) 在文件夹app下创建hello.jsx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">首先创建自己的第一组件，当你创建一个组件，您定义所有这些通过重写的反应，组件来呈现功能</div><div class="line">在hello.jsx中输入：</div><div class="line">import React from &apos;react&apos;;</div><div class="line">class Hello extends React.Component&#123;</div><div class="line">    render()&#123;</div><div class="line">    return &lt;h1&gt;你好&lt;/h1&gt;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">需要注意的是：我们运用的是ES6语法，可以使我们的代码不用写React.createClass更加简洁。</div><div class="line">下面的代码是不用ES6和JSX的代码</div><div class="line">var React =require(&apos;react&apos;);</div><div class="line">var Hello =React.createClass(&#123;</div><div class="line">    displayName:&apos;Hello&apos;,</div><div class="line">    render:function()&#123;</div><div class="line">    return React.createElement(&quot;h1&quot;,null,&quot;Hello&quot;);</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">当我们使用JSX时,我们可以更简练地定义虚拟DOM元素,而无需调用反应。createElement和通过哪些属性的元素。我们简单的你好组件可能有相同数量的行代码但JSX使事情更容易,继续构建组件和结合在一起。所以我们不用这种方式了</div></pre></td></tr></table></figure>
+<h3 id="（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素"><a href="#（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素" class="headerlink" title="（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素"></a>（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">   class Hello extends React.Component&#123;</div><div class="line">    render()&#123;</div><div class="line">    return &lt;h1&gt;你好&lt;/h1&gt;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(&lt;Hello/&gt;,document.getElementById(&apos;hello&apos;));</div></pre></td></tr></table></figure>
+<h3 id="（7）同样的方式早app文件夹下添加world-jsx组件"><a href="#（7）同样的方式早app文件夹下添加world-jsx组件" class="headerlink" title="（7）同样的方式早app文件夹下添加world.jsx组件"></a>（7）同样的方式早app文件夹下添加world.jsx组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line"></div><div class="line">class World extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return &lt;h1&gt;World&lt;/h1&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(&lt;World/&gt;, document.getElementById(&apos;world&apos;));</div><div class="line">//调用html中的id=&quot;world&quot;。对应的是World组件</div></pre></td></tr></table></figure>
+<h3 id="（8）在build-文件夹下的index-html中添加如下代码"><a href="#（8）在build-文件夹下的index-html中添加如下代码" class="headerlink" title="（8）在build 文件夹下的index.html中添加如下代码:"></a>（8）在build 文件夹下的index.html中添加如下代码:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"> &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;Hello React&lt;/title&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;</div><div class="line">  &lt;div id=&quot;hello&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;world&quot;&gt;&lt;/div&gt;</div><div class="line"> &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="9-在app文件夹下的main-js添加如下代码"><a href="#9-在app文件夹下的main-js添加如下代码" class="headerlink" title="(9) 在app文件夹下的main.js添加如下代码"></a>(9) 在app文件夹下的main.js添加如下代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">作用是：导入这两个反应组件。</div><div class="line">import Hello from&apos;./hello.jsx&apos;;</div><div class="line">import World from&apos;./world.jsx&apos;;</div></pre></td></tr></table></figure>
+<h3 id="（10）我们需要告诉Webpack-这将是我们的入口点和加载器使用在创建包。"><a href="#（10）我们需要告诉Webpack-这将是我们的入口点和加载器使用在创建包。" class="headerlink" title="（10）我们需要告诉Webpack,这将是我们的入口点和加载器使用在创建包。"></a>（10）我们需要告诉Webpack,这将是我们的入口点和加载器使用在创建包。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">在项目目录下创建webpack.config.js</div><div class="line">varpath=require(&apos;path&apos;);</div><div class="line">varwebpack=require(&apos;webpack&apos;);</div><div class="line"></div><div class="line">module.exports=&#123;</div><div class="line"> entry:path.resolve(__dirname, &apos;./app/main.js&apos;),</div><div class="line"> output:&#123;</div><div class="line">     path:path.resolve(__dirname, &apos;./build&apos;),</div><div class="line">filename:&apos;bundle.js&apos;&#125;,</div><div class="line"> module:&#123;</div><div class="line">   loaders:[</div><div class="line">      &#123;</div><div class="line">        test:/.jsx?$/,// 用正则来匹配文件路径，这段意思是匹配 js 或者 jsx</div><div class="line">        loader:&apos;babel-loader&apos;,</div><div class="line">        exclude:/node_modules/,</div><div class="line">        query:&#123;</div><div class="line">          presets:[&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line"> &#125;,</div><div class="line">&#125;;</div><div class="line">其中entry指定了webpack的入口程序，好比c++和java中的main程序一样，我们把最终要插入到页面指定位置的react模板写入main.js中。</div><div class="line"></div><div class="line">而output则指定了webpack打包成功之后文件名称以及文件的存放位置。</div></pre></td></tr></table></figure>
+<h3 id="（11）我们需要在html中添加bundle-js-依照之前指定的项目结构，我们可以在index-html中直接引入打包生成的bundle-js"><a href="#（11）我们需要在html中添加bundle-js-依照之前指定的项目结构，我们可以在index-html中直接引入打包生成的bundle-js" class="headerlink" title="（11）我们需要在html中添加bundle.js.依照之前指定的项目结构，我们可以在index.html中直接引入打包生成的bundle.js"></a>（11）我们需要在html中添加bundle.js.依照之前指定的项目结构，我们可以在index.html中直接引入打包生成的bundle.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"> &lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;Hello React&lt;/title&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;</div><div class="line">  &lt;div id=&quot;hello&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div id=&quot;world&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</div><div class="line"> &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="（12）使用webpack-dev-server：监听代码自动刷新！"><a href="#（12）使用webpack-dev-server：监听代码自动刷新！" class="headerlink" title="（12）使用webpack-dev-server：监听代码自动刷新！"></a>（12）使用webpack-dev-server：监听代码自动刷新！</h3><h4 id="（12-1、在控制台上输入"><a href="#（12-1、在控制台上输入" class="headerlink" title="（12.1、在控制台上输入"></a>（12.1、在控制台上输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">npm install webpack-dev-server --save-dev</div><div class="line">npm install --save-dev react-hot-loader //热加载</div><div class="line"></div><div class="line">我们先打开package.json，并找到scripts代码块。在没引入webpack-dev-server之前，我们运行这个项目的姿势是这样的</div><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">        &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">        &quot;build&quot;: &quot;webpack&quot;</div><div class="line">&#125;</div><div class="line">并且执行：</div><div class="line">npm run build</div></pre></td></tr></table></figure>
+<h4 id="（12-2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm-run-build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的："><a href="#（12-2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm-run-build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的：" class="headerlink" title="（12.2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm run build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的："></a>（12.2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm run build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">为scripts添加</div><div class="line">&quot;scripts&quot;: &#123;</div><div class="line"></div><div class="line">        &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">        &quot;build&quot;: &quot;webpack&quot;,</div><div class="line">          &quot;dev&quot;: &quot;webpack-dev-server --devtool eval --progress --colors --hot --content-base build&quot;</div><div class="line">&#125;</div><div class="line">    ps：dev里各属性值的意思是：</div><div class="line">    1.  webpack-dev-server: 在 localhost:8080 建立一个 Web 服务器</div><div class="line">    2.  --devtool eval:为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号</div><div class="line">    3.  --progress: 显示合并代码进度</div><div class="line">    4.  --colors: 在命令行中显示颜色</div><div class="line">    5.  --content-base build:指向设置的输出目录</div></pre></td></tr></table></figure>
+<h4 id="（12-3）并且在index-html里加入：build-index-html"><a href="#（12-3）并且在index-html里加入：build-index-html" class="headerlink" title="（12.3）并且在index.html里加入：build/index.html"></a>（12.3）并且在index.html里加入：build/index.html</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang=&quot;en&quot;&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;hello react&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;hello&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div id=&quot;world&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;script src=&quot;http://localhost:8080/webpack-dev-server.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="（12-4）在webpack-config-js的入口处加入："><a href="#（12-4）在webpack-config-js的入口处加入：" class="headerlink" title="（12.4）在webpack.config.js的入口处加入："></a>（12.4）在webpack.config.js的入口处加入：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">var path=require(&apos;path&apos;);</div><div class="line">var webpack =require(&apos;webpack&apos;);</div><div class="line">module.exports=&#123;</div><div class="line"> entry:[&apos;webpack/hot/dev-server&apos;,</div><div class="line">        &apos;webpack-dev-server/client?http://localhost:8080&apos;,</div><div class="line">        path.resolve(__dirname, &apos;./app/main.js&apos;)],</div><div class="line">output:&#123;</div><div class="line">path: path.resolve(__dirname, &apos;./build&apos;),</div><div class="line">filename:&apos;bundle.js&apos;</div><div class="line">&#125;,</div><div class="line">module:&#123;</div><div class="line">loaders:[&#123;</div><div class="line">test:/.jsx?$/,</div><div class="line">loader:&apos;babel-loader&apos;,</div><div class="line">exclude:/node_modules/,</div><div class="line">query:&#123;</div><div class="line">                presets:[&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">plugins: [</div><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">        &apos;process.env.NODE_ENV&apos;: &apos;&quot;development&quot;&apos;</div><div class="line">    &#125;),</div><div class="line">new webpack.HotModuleReplacementPlugin()</div><div class="line">]</div><div class="line">&#125;;</div><div class="line">最后执行：</div><div class="line">npm run dev</div><div class="line">在浏览器中打开localhost：8080</div><div class="line"></div><div class="line"></div><div class="line">修改端口为8090</div><div class="line">&quot;dev&quot;: &quot;webpack-dev-server --devtool eval --port 8090 --progress --colors --hot --content-base build&quot;</div><div class="line">开发环境</div><div class="line">&quot;compile&quot;: &quot;webpack -p --progress --colors --config webpack.production.config.js&quot;,</div></pre></td></tr></table></figure>
+<p>添加本文件，开发js<br><img src="http://o6znw17tt.bkt.clouddn.com/clipboard.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">var path=require(&apos;path&apos;);</div><div class="line">var webpack =require(&apos;webpack&apos;);</div><div class="line">var CommonsChunkPlugin = require(&quot;webpack/lib/optimize/CommonsChunkPlugin&quot;);</div><div class="line">module.exports=&#123;</div><div class="line">resolve:&#123;</div><div class="line">root:[</div><div class="line">path.resolve(&apos;./app/_global/components&apos;)</div><div class="line">        ],</div><div class="line">extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.jsx&apos;]</div><div class="line">    &#125;,</div><div class="line">entry:[</div><div class="line">path.resolve(__dirname, &apos;./app/main.js&apos;)</div><div class="line">    ],</div><div class="line">output:&#123;</div><div class="line">path: __dirname + &apos;/build&apos;,</div><div class="line">filename: &apos;bundle.js&apos;,</div><div class="line">chunkFilename: &apos;[id].chunk.js&apos;</div><div class="line">&#125;,</div><div class="line">module:&#123;</div><div class="line">loaders:[&#123;</div><div class="line">test:/.jsx?$/,</div><div class="line">loader:&apos;babel-loader&apos;,</div><div class="line">exclude:/node_modules/,</div><div class="line">query:&#123;</div><div class="line">presets:[&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">&#123;test: /\.css$/, loader: &apos;style!css&apos;&#125;,</div><div class="line">&#123;test: /\.scss$/, loader: &quot;style!css!sass&quot;&#125;,</div><div class="line">&#123;test: /\.less$/,loader: &apos;style!css!less&apos;&#125;,</div><div class="line">&#123;test: /\.(png|jpg)$/, loader: &apos;url?limit=25000&apos;&#125;</div><div class="line"></div><div class="line"></div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">plugins: [</div><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">&apos;process.env.NODE_ENV&apos;: &apos;&quot;development&quot;&apos;</div><div class="line">&#125;),</div><div class="line">new webpack.HotModuleReplacementPlugin()</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">开发环境发布时执行命令 npm run compile</div><div class="line">然后将build里面的东西放在服务器上</div><div class="line"></div><div class="line">package.json</div><div class="line">&#123;</div><div class="line">&quot;name&quot;: &quot;pack_react3&quot;,</div><div class="line">&quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">&quot;description&quot;: &quot;&quot;,</div><div class="line">&quot;main&quot;: &quot;index.js&quot;,</div><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">&quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">&quot;build&quot;: &quot;webpack&quot;,</div><div class="line">&quot;compile&quot;: &quot;webpack -p --progress --colors --config webpack.production.config.js&quot;,</div><div class="line">&quot;dev&quot;: &quot;webpack-dev-server --devtool eval --port 8090 --progress --colors --hot --content-base build&quot;</div><div class="line">&#125;,</div><div class="line">&quot;author&quot;: &quot;&quot;,</div><div class="line">&quot;license&quot;: &quot;ISC&quot;,</div><div class="line">&quot;devDependencies&quot;: &#123;</div><div class="line">&quot;babel-core&quot;: &quot;^6.7.4&quot;,</div><div class="line">&quot;babel-loader&quot;: &quot;^6.2.4&quot;,</div><div class="line">&quot;babel-preset-es2015&quot;: &quot;^6.6.0&quot;,</div><div class="line">&quot;babel-preset-react&quot;: &quot;^6.5.0&quot;,</div><div class="line">&quot;css-loader&quot;: &quot;^0.23.1&quot;,</div><div class="line">&quot;file-loader&quot;: &quot;^0.8.5&quot;,</div><div class="line">&quot;less&quot;: &quot;^2.6.1&quot;,</div><div class="line">&quot;less-loader&quot;: &quot;^2.2.3&quot;,</div><div class="line">&quot;react&quot;: &quot;^0.14.8&quot;,</div><div class="line">&quot;react-dom&quot;: &quot;^0.14.8&quot;,</div><div class="line">&quot;react-hot-loader&quot;: &quot;^1.3.0&quot;,</div><div class="line">&quot;reqwest&quot;: &quot;^2.0.5&quot;,</div><div class="line">&quot;style-loader&quot;: &quot;^0.13.1&quot;,</div><div class="line">&quot;url-loader&quot;: &quot;^0.5.7&quot;,</div><div class="line">&quot;webpack&quot;: &quot;^1.12.14&quot;,</div><div class="line">&quot;webpack-dev-server&quot;: &quot;^1.14.1&quot;</div><div class="line">&#125;,</div><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">&quot;antd&quot;: &quot;^0.12.13&quot;,</div><div class="line">&quot;babel-preset-react&quot;: &quot;^6.5.0&quot;,</div><div class="line">&quot;rc-select&quot;: &quot;^6.0.6&quot;,</div><div class="line">&quot;react&quot;: &quot;^0.14.8&quot;,</div><div class="line">&quot;react-dom&quot;: &quot;^0.14.8&quot;,</div><div class="line">&quot;react-router&quot;: &quot;^2.2.2&quot;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">var path=require(&apos;path&apos;);</div><div class="line">var webpack =require(&apos;webpack&apos;);</div><div class="line"></div><div class="line">module.exports=&#123;</div><div class="line">resolve:&#123;</div><div class="line">root:[</div><div class="line">            path.resolve(&apos;./app/_global/components&apos;)</div><div class="line">        ],</div><div class="line">extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.jsx&apos;]</div><div class="line">    &#125;,</div><div class="line">entry:[&apos;webpack/hot/dev-server&apos;,</div><div class="line">&apos;webpack-dev-server/client?http://localhost:8090&apos;,</div><div class="line">path.resolve(__dirname, &apos;./app/main.js&apos;)],</div><div class="line">output:&#123;</div><div class="line">//path: path.resolve(__dirname, &apos;build/bundles&apos;),</div><div class="line">        //filename:&apos;bundle.js&apos;</div><div class="line">path: __dirname + &apos;/build&apos;,</div><div class="line">filename: &apos;bundle.js&apos;,</div><div class="line">chunkFilename: &apos;[id].chunk.js&apos;</div><div class="line">&#125;,</div><div class="line">module:&#123;</div><div class="line">loaders:[&#123;</div><div class="line">test:/.jsx?$/,</div><div class="line">loader:&apos;babel-loader&apos;,</div><div class="line">exclude:/node_modules/,</div><div class="line">query:&#123;</div><div class="line">presets:[&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">&#123;test: /\.css$/, loader: &apos;style!css&apos;&#125;,</div><div class="line">&#123;test: /\.scss$/, loader: &quot;style!css!sass&quot;&#125;,</div><div class="line">&#123;test: /\.less$/,loader: &apos;style!css!less&apos;&#125;,</div><div class="line">&#123;test: /\.(png|jpg)$/, loader: &apos;url?limit=25000&apos;&#125;</div><div class="line"></div><div class="line"></div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">plugins: [</div><div class="line">new webpack.DefinePlugin(&#123;</div><div class="line">&apos;process.env.NODE_ENV&apos;: &apos;&quot;development&quot;&apos;</div><div class="line">&#125;),</div><div class="line">new webpack.HotModuleReplacementPlugin()</div><div class="line">]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="创建路由"><a href="#创建路由" class="headerlink" title="创建路由"></a>创建路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在webpack.config.js中输入</div><div class="line">resolve:&#123;</div><div class="line">root:[</div><div class="line">        path.resolve(&apos;./app/_global/components&apos;) //这个是根目录，进来之后先去找这个</div><div class="line">    ],</div><div class="line">extensions:[&apos;&apos;,&apos;.js&apos;,&apos;.jsx&apos;]//拓展，以后带有&apos;&apos;,&apos;.js&apos;,&apos;.jsx&apos;可以省略不写，如：dome.js 可以写成dome</div><div class="line">&#125;,</div><div class="line">在目录下面创建下面的地址</div><div class="line"></div><div class="line">在customComponents.js中调用写的默认模板</div><div class="line">import React from &apos;react&apos;;</div><div class="line">require(&apos;customComponents/customComponents.css&apos;) ;//引用customConponents文件中的css样式，其实这里省略了root中的./app/_global/components</div><div class="line">import NavBox from &apos;customComponents/NavBox.js&apos;//定义默认模块</div><div class="line">module.exports=&#123;NavBox&#125;//模块输出，输出默认模块</div></pre></td></tr></table></figure>
+<h2 id="路由搭建逻辑："><a href="#路由搭建逻辑：" class="headerlink" title="路由搭建逻辑："></a>路由搭建逻辑：</h2><h3 id="1-首先创建子路由"><a href="#1-首先创建子路由" class="headerlink" title="1 首先创建子路由"></a>1 首先创建子路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123; render &#125; from &apos;react-dom&apos;</div><div class="line">import &#123; Router, Route, hashHistory, IndexRoute,Link &#125; from &apos;react-router&apos;;</div><div class="line">import Home from &apos;./modules/_public/Home&apos;;</div><div class="line">import Dashboard from &apos;./modules/_public/Dashboard&apos;;</div><div class="line">import NotFound from &apos;./modules/_public/NotFound&apos;;</div><div class="line">const routerConfig = [</div><div class="line">    &#123;</div><div class="line">path: &apos;/&apos;,</div><div class="line">component: Dashboard, //默认面板</div><div class="line">indexRoute: &#123; component: Home &#125;,//当刚开始进入，什么路由也没有的时候加载</div><div class="line">breadcrumbName:&apos;首页&apos;,</div><div class="line">childRoutes: [</div><div class="line">require(&apos;./modules/circle&apos;)//子路由地址</div><div class="line">]</div><div class="line">    &#125;,</div><div class="line">&#123;</div><div class="line">path: &apos;*&apos;,</div><div class="line">component: Dashboard,</div><div class="line">indexRoute:&#123;component:NotFound&#125;//当什么路由地址没有的时候加载</div><div class="line">&#125;</div><div class="line">];</div><div class="line">render((</div><div class="line">&lt;Router  history=&#123;hashHistory&#125; routes=&#123;routerConfig&#125; /&gt;</div><div class="line">), document.getElementById(&apos;app&apos;));</div><div class="line">上面的Home Dashboard NotFound 分别对应下面的三个模块</div></pre></td></tr></table></figure>
+<h3 id="2-子路由地址"><a href="#2-子路由地址" class="headerlink" title="2 子路由地址"></a>2 子路由地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">require(&apos;./modules/circle&apos;)//子路由地址</div><div class="line">从这个地址进入子路由</div><div class="line"></div><div class="line">进入这个子路由 ，先执行getChildRoutes 然后执行 getComponent这个</div><div class="line">getChildRoutes  这个是子路由地址</div><div class="line">getComponent    这个是 面板地址 就是本页加载的地方</div><div class="line"></div><div class="line">module.exports=&#123;</div><div class="line">path:&apos;circle&apos;,</div><div class="line">breadcrumbName:&quot;圈子&quot;,</div><div class="line">getChildRoutes(location,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line">            callback(null,[</div><div class="line">                require(&apos;./routes/items&apos;)//这个子路由</div><div class="line">])</div><div class="line">        &#125;);</div><div class="line">&#125;,</div><div class="line">getComponent(nextState,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line"></div><div class="line">            callback(null,require(&apos;./components/circle.jsx&apos;))//这个是跳转的面板</div><div class="line">&#125;)</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">走到这里，先进入这个页面的circle.jsx中</div><div class="line"></div><div class="line">这是circle.jsx</div><div class="line">当点击圈子的时候 进入子路由的index.js</div><div class="line"></div><div class="line">module.exports=&#123;</div><div class="line">path:&apos;items&apos;,</div><div class="line">getChildRoutes(location,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line">           callback(null,[</div><div class="line">               require(&apos;./routes/item&apos;)</div><div class="line">           ])</div><div class="line">        &#125;);</div><div class="line">&#125;,</div><div class="line">getComponents(nextSate,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line">            callback(null,&#123;</div><div class="line">header:require(&apos;./components/header.jsx&apos;),</div><div class="line">main:require(&apos;./components/items.jsx&apos;),</div><div class="line">footer:require(&apos;./components/footer.jsx&apos;)</div><div class="line">            &#125;);</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">传递 header main footer 三个面板给circle.jsx</div><div class="line">import React,&#123;Component&#125; from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">import Dashboard from &apos;./dashboard.jsx&apos;;</div><div class="line">import &#123;Affix&#125; from &apos;antd&apos;;</div><div class="line"></div><div class="line">class Circle extends Component&#123;</div><div class="line">render() &#123;</div><div class="line">        console.log(&quot;adsfa this.props: &quot;, this.props);</div><div class="line">let &#123; header, main, footer, children, params &#125; = this.props,content;</div><div class="line">console.log(&quot;这是header&quot;,header);</div><div class="line">if (header || main || footer) &#123;</div><div class="line">            content = (</div><div class="line">&lt;div className=&quot;content_group&quot;&gt;</div><div class="line">&#123;(!!header) ? (&lt;Affix offset=&#123;20&#125;&gt;&lt;div className=&quot;content_header&quot;&gt;&#123;header&#125;&lt;/div&gt;&lt;/Affix&gt;) : &quot;&quot;&#125;</div><div class="line">                    &#123;(!!main) ? (&lt;div className=&quot;content_main&quot;&gt;&#123;main&#125;&lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">                    &#123;(!!footer) ? (&lt;div className=&quot;content_footer&quot;&gt;&#123;footer&#125;&lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">        &#125; else if (children) &#123;</div><div class="line">            content = children</div><div class="line">&#125; else &#123;</div><div class="line">            content = &lt;Dashboard /&gt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">return (</div><div class="line">&lt;div&gt;</div><div class="line">&#123;content&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">module.exports=Circle;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">在某一个路由中需要执行</div><div class="line"></div><div class="line">首先执行第一个index.js,这是index.jsx内容</div><div class="line">module.exports=&#123;</div><div class="line">path:&apos;items&apos;,</div><div class="line">getChildRoutes(location,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line">           callback(null,[</div><div class="line">               require(&apos;./routes/item&apos;)</div><div class="line">           ])</div><div class="line">        &#125;);</div><div class="line">&#125;,</div><div class="line">getComponents(nextSate,callback)&#123;</div><div class="line">require.ensure([],(require)=&gt;&#123;</div><div class="line">            callback(null,&#123;</div><div class="line">header:require(&apos;./components/header.jsx&apos;),</div><div class="line">main:require(&apos;./components/items.jsx&apos;),</div><div class="line">footer:require(&apos;./components/footer.jsx&apos;)</div><div class="line">            &#125;);</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">然后又会从mian.js中开始加载（每一次执行一个路由都会从头开始加载），加载到circle.jsx,这是circle</div><div class="line">import React, &#123; Component &#125; from &apos;react&apos;</div><div class="line">import Dashboard from &apos;./dashboard.jsx&apos;</div><div class="line">import &#123; Affix &#125; from &apos;antd&apos;;</div><div class="line"></div><div class="line">class Circle extends Component &#123;</div><div class="line">render() &#123;</div><div class="line">let &#123; header, main, footer, children, params &#125; = this.props, content</div><div class="line">if (header || main || footer) &#123;</div><div class="line">            content = (</div><div class="line">&lt;div className=&quot;content_group&quot;&gt;</div><div class="line">&#123;(!!header) ? (&lt;Affix offset=&#123;20&#125;&gt;&lt;div className=&quot;content_header&quot;&gt;&#123;header&#125;&lt;/div&gt;&lt;/Affix&gt;) : &quot;&quot;&#125;</div><div class="line">                    &#123;(!!main) ? (&lt;div className=&quot;content_main&quot;&gt;&#123;main&#125;&lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">                    &#123;(!!footer) ? (&lt;div className=&quot;content_footer&quot;&gt;&#123;footer&#125;&lt;/div&gt;) : &quot;&quot;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">        &#125; else if (children) &#123;</div><div class="line">            content = children</div><div class="line">&#125; else &#123;</div><div class="line">            content = &lt;Dashboard /&gt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">return (</div><div class="line">&lt;div&gt;</div><div class="line">&#123;content&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">在本页面中加载header main footer数据，并调用了3中的items.js中的数据。这是items.jsx</div><div class="line">class CircleItems extends Component &#123;</div><div class="line">render() &#123;</div><div class="line">return (</div><div class="line">&lt;div&gt;</div><div class="line">&#123;</div><div class="line">this.props.children</div><div class="line">||</div><div class="line">&lt;Table columns=&#123;columns&#125; dataSource=&#123;data&#125;</div><div class="line">expandedRowRender=&#123;record =&gt; &lt;p&gt;&#123;record.description&#125;&lt;/p&gt;&#125;/&gt;</div><div class="line">&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">module.exports = CircleItems;</div><div class="line">这里有一个或（||）的判断，如果this.props.children为true时，下面的就不执行了，如果为false的时候，就会执行下面的table</div><div class="line">因为没有执行子路由，这里的this.props.children为false，执行下面的table</div><div class="line">然后就会给circle.jsx传递数据，加载出来下面的页面</div><div class="line"></div><div class="line"></div><div class="line">当点击详细信息的时候就会执行4步的index.js</div><div class="line">module.exports = &#123;</div><div class="line">path: &apos;id/:circleID&apos;,</div><div class="line">breadcrumbName:&quot;项目 :circleID&quot;,</div><div class="line">getComponent(nextState, callback) &#123;</div><div class="line">require.ensure([], (require) =&gt; &#123;</div><div class="line">            callback(null, require(&apos;./components/item&apos;))</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">这里执行了1中index.js的子路由</div><div class="line">就会触发items.jsx中的this.props.children为true，然后就会走子路由。然后走4步的index.js</div><div class="line">跳到item.jsx中</div><div class="line">import React, &#123; Component &#125; from &apos;react&apos;</div><div class="line"></div><div class="line">class circleItem extends Component &#123;</div><div class="line">render() &#123;</div><div class="line">let properties = this.props;</div><div class="line">return (</div><div class="line">&lt;div&gt;</div><div class="line">此处是具体某一条数据的详细信息页，根据传入的参数（&#123;properties.params.circleID&#125;）读取接口，显示数据，进行逻辑操作。</div><div class="line">&lt;/div&gt;</div><div class="line">)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">module.exports = circleItem</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/05/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
+        <p><span>发布时间:</span>2017-05-05, 17:20:01</p>
+        <p><span>最后更新:</span>2017-05-05, 17:20:01</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/05/react/react_creation/" title="React.js  WebPack  Babel ES6 React-router Redux 项目搭建">https://qingege.github.io/2017/05/05/react/react_creation/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2017/05/05/react/react_creation/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/05/react/react_data/">
+                    react.js 组件之间state数据的传值
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/05/react/propTypes/">
+                    React组件属性类型（propTypes）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-创建项目"><span class="toc-number">1.</span> <span class="toc-text">1 创建项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-创建项目-1"><span class="toc-number">2.</span> <span class="toc-text">1 创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（1）-创建package-json"><span class="toc-number">2.0.1.</span> <span class="toc-text">（1） 创建package.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（2）-安装react和react-DOM"><span class="toc-number">2.0.2.</span> <span class="toc-text">（2） 安装react和react DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装webpack和webpack-dev-server"><span class="toc-number">2.0.3.</span> <span class="toc-text">(3) 安装webpack和webpack-dev-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（4）安装babel-loader-和下面几个组件"><span class="toc-number">2.0.4.</span> <span class="toc-text">（4）安装babel-loader 和下面几个组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-在文件夹app下创建hello-jsx"><span class="toc-number">2.0.4.1.</span> <span class="toc-text">(5) 在文件夹app下创建hello.jsx</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素"><span class="toc-number">2.0.5.</span> <span class="toc-text">（6）引入DOM的渲染功能，传递一个组件对象来连接一个实际的DOM元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（7）同样的方式早app文件夹下添加world-jsx组件"><span class="toc-number">2.0.6.</span> <span class="toc-text">（7）同样的方式早app文件夹下添加world.jsx组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（8）在build-文件夹下的index-html中添加如下代码"><span class="toc-number">2.0.7.</span> <span class="toc-text">（8）在build 文件夹下的index.html中添加如下代码:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-在app文件夹下的main-js添加如下代码"><span class="toc-number">2.0.8.</span> <span class="toc-text">(9) 在app文件夹下的main.js添加如下代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（10）我们需要告诉Webpack-这将是我们的入口点和加载器使用在创建包。"><span class="toc-number">2.0.9.</span> <span class="toc-text">（10）我们需要告诉Webpack,这将是我们的入口点和加载器使用在创建包。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（11）我们需要在html中添加bundle-js-依照之前指定的项目结构，我们可以在index-html中直接引入打包生成的bundle-js"><span class="toc-number">2.0.10.</span> <span class="toc-text">（11）我们需要在html中添加bundle.js.依照之前指定的项目结构，我们可以在index.html中直接引入打包生成的bundle.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#（12）使用webpack-dev-server：监听代码自动刷新！"><span class="toc-number">2.0.11.</span> <span class="toc-text">（12）使用webpack-dev-server：监听代码自动刷新！</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（12-1、在控制台上输入"><span class="toc-number">2.0.11.1.</span> <span class="toc-text">（12.1、在控制台上输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（12-2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm-run-build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的："><span class="toc-number">2.0.11.2.</span> <span class="toc-text">（12.2）项目就跑起来啦，但是每次修改程序我们都要手动输入npm run build来跑项目，这无疑是一件非常蛋疼的事情。但有了webpack-dev-server光环，我们的姿势应该是这样的：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（12-3）并且在index-html里加入：build-index-html"><span class="toc-number">2.0.11.3.</span> <span class="toc-text">（12.3）并且在index.html里加入：build/index.html</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（12-4）在webpack-config-js的入口处加入："><span class="toc-number">2.0.11.4.</span> <span class="toc-text">（12.4）在webpack.config.js的入口处加入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack-config-js"><span class="toc-number">2.0.11.5.</span> <span class="toc-text">webpack.config.js</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建路由"><span class="toc-number">2.0.12.</span> <span class="toc-text">创建路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由搭建逻辑："><span class="toc-number">2.1.</span> <span class="toc-text">路由搭建逻辑：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-首先创建子路由"><span class="toc-number">2.1.1.</span> <span class="toc-text">1 首先创建子路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-子路由地址"><span class="toc-number">2.1.2.</span> <span class="toc-text">2 子路由地址</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"React.js  WebPack  Babel ES6 React-router Redux 项目搭建　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/05/react/react_data/" title="上一篇: react.js 组件之间state数据的传值">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/05/react/propTypes/" title="下一篇: React组件属性类型（propTypes）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/news/">react/rudux/news</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/vue/vue/">Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/propTypes/">React组件属性类型（propTypes）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/fetch/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/devtool/">devtool 安装应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/new/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/hello-world/">fullPage</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/heco/">heco</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zujian/">JavaScript/js_zujian</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zong/">javascript总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_random/">js 随机数</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 李钦
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

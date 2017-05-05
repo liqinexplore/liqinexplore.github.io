@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="李钦" />
+
+
+
+<meta name="description" content="An open source react rich-text editor ( mordern react editor includes media support such as texts, images, videos, audios, links etc. ), development based on Draft-Js and Ant-design, good support html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LQ_Blog">
+<meta property="og:url" content="https://qingege.github.io/2017/05/05/react/rudux/news/index.html">
+<meta property="og:site_name" content="LQ_Blog">
+<meta property="og:description" content="An open source react rich-text editor ( mordern react editor includes media support such as texts, images, videos, audios, links etc. ), development based on Draft-Js and Ant-design, good support html">
+<meta property="og:image" content="https://image.qiluyidian.mobi/54541628992197066868.png">
+<meta property="og:updated_time" content="2017-05-05T09:39:37.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LQ_Blog">
+<meta name="twitter:description" content="An open source react rich-text editor ( mordern react editor includes media support such as texts, images, videos, audios, links etc. ), development based on Draft-Js and Ant-design, good support html">
+<meta name="twitter:image" content="https://image.qiluyidian.mobi/54541628992197066868.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="LQ_Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>LQ_Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">李钦</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Way to explore</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fetch/">Fetch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PropTypes/">PropTypes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-router/">React-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-js/">React.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebPack/">WebPack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devtool/">devtool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fullPage/">fullPage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/背景图片/">背景图片</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">李钦</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">李钦</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Way to explore</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:liqintiantai@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/qingege" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-react/rudux/news" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/05/react/rudux/news/" class="article-date">
+      <time datetime="2017-05-05T09:39:09.865Z" itemprop="datePublished">2017-05-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>An open source react rich-text editor ( mordern react editor includes media support such as texts, images, videos, audios, links etc. ), development based on Draft-Js and Ant-design, good support html, markdown, draft-raw mode.</p>
+<p>一款基于 draft-Js 和 ant-design 实现的 react 富文本编辑器，支持文本、图片、视频、音频、链接等元素插入，同时支持HTML、markdown、draft-raw格式。</p>
+<h2 id="Live-demo"><a href="#Live-demo" class="headerlink" title="Live demo"></a>Live demo</h2><p><a href="https://qingege.github.io/">react_draft_lq</a></p>
+<p>Disabled media insert feature on demo page, because of there was no online API support for the time being, here is <a href="https://github.com/leejaen/react-lz-editor/blob/master/java_demo/getQiniuUptoken.java" target="_blank" rel="external">The server side API demo in java</a> you may want.</p>
+<p>因为上传图片视频多媒体等文件需要后端服务器接口配合，这部分暂时没有实现在线demo接口，所以暂时通过配置去掉了，java版本接口实现示例请参考<a href="https://github.com/leejaen/react-lz-editor/blob/master/java_demo/getQiniuUptoken.java" target="_blank" rel="external">示例代码</a>。</p>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>npm install react-lz-editor –save</p>
+<p>Version note: React 15.4.2+ and react-dom 15.4.2+ is required. Antd version at last 2.8.3 in your project is recommended.</p>
+<p>版本号说明：react、react-dom 版本必须在15.4.2以上，Antd版本最好在2.8.3以上。</p>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><pre><code>git+ssh://git@https://github.com/qingege/react_draft_lq.git
+</code></pre><h1 id="Usage-amp-Examples"><a href="#Usage-amp-Examples" class="headerlink" title="Usage &amp; Examples"></a>Usage &amp; Examples</h1>  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> LzEditor <span class="keyword">from</span> <span class="string">'react-lz-editor'</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      content: <span class="string">`&lt;h1&gt;一级标题 Head level 1&lt;/h1&gt;</span></div><div class="line">              &lt;p style='text-align:center;'&gt;&lt;span style="color:#ED5565"&gt;红色文字&lt;/span&gt;，居中对齐，&lt;strong&gt;加粗&lt;/strong&gt;，&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;</div><div class="line">              &lt;blockquote style='text-align:left;'&gt;&lt;span style="color:#ffce54"&gt;其&lt;/span&gt;&lt;span style="color:#a0d468"&gt;他&lt;/span&gt;&lt;span style="color:#38afda"&gt;颜&lt;/span&gt;&lt;span style="color:#967adc"&gt;色&lt;/span&gt; &lt;span style="color:#a0d468"&gt;C&lt;/span&gt;&lt;span style="color:#48cfad"&gt;OL&lt;/span&gt;&lt;span style="color:#4a89dc"&gt;O&lt;/span&gt;&lt;span style="color:#967adc"&gt;R&lt;/span&gt;&lt;span style="color:#434a54"&gt;S&lt;/span&gt;&lt;/blockquote&gt;</div><div class="line">              &lt;p&gt;&lt;br&gt;&lt;/p&gt;</div><div class="line">              &lt;ul&gt;</div><div class="line">                &lt;li&gt;&lt;span style="color:#434a54"&gt;list 1&lt;/span&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;span style="color:#434a54"&gt;list 2&lt;/span&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;span style="color:#434a54"&gt;list 3&lt;/span&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;span style="color:#434a54"&gt;......&lt;/span&gt;&lt;/li&gt;</div><div class="line">              &lt;/ul&gt;</div><div class="line">              &lt;pre&gt;&lt;code&gt;Block here.Block here.Block here.Block here.&lt;/code&gt;&lt;/pre&gt;</div><div class="line">              &lt;pre&gt;&lt;code&gt;Block here.Block here.Block here.Block here.Block here.&lt;/code&gt;&lt;/pre&gt;</div><div class="line">              &lt;pre&gt;&lt;code&gt;Block here.Block here.Block here.Block here.Block here.&lt;/code&gt;&lt;/pre&gt;</div><div class="line">              &lt;p&gt;&lt;img src="https://image.qiluyidian.mobi/43053508139910678747.jpg"/&gt;&lt;/p&gt;</div><div class="line">              &lt;p&gt;&lt;br&gt;&lt;/p&gt;</div><div class="line">              &lt;h2&gt;正文示例：&lt;/h2&gt;</div><div class="line">              &lt;h3&gt;乐视金融传将收购数码视讯子公司，拿下互联网、数字电视两张支付牌照&lt;/h3&gt;</div><div class="line">              &lt;p&gt;用场景化的方式表达就是，用户可以在观看电视购物频道的时候，直接从电视上进行支付购买商品，不用再通过银行汇款或者货到付款；可以选择对电视上的点播内容进行付费，还可能在电视上对水电煤等公用事业费用进行缴费。&lt;/p&gt;</div><div class="line">              &lt;p&gt;一度金融的消息称，乐视金融同数码视讯的接触尚处在高层范围内进行，因此对于收购价格，暂时还不能确定。&lt;/p&gt;</div><div class="line">              &lt;p&gt;如果乐视金融拿下数码视讯的两张金融牌照，并且在到期后能够获得央行审核顺利延期，意味着乐视可以通过移动设备和电视两个终端来链接用户的银行卡。&lt;/p&gt;</div><div class="line">              &lt;p&gt;乐视金融在去年11月份首度公开亮相的时候，缺少银行和支付两张关键牌照就一直是外界关注的问题。&lt;/p&gt;`</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.receiveHtml = <span class="keyword">this</span>.receiveHtml.bind(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">  receiveHtml(content) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Recieved content"</span>, content);</div><div class="line">  &#125;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> uploadConfig = &#123;</div><div class="line">      QINIU_URL: <span class="string">"http://up.qiniu.com"</span>, <span class="comment">//上传地址，现在暂只支持七牛上传</span></div><div class="line">      QINIU_IMG_TOKEN_URL: <span class="string">"http://www.yourServerAddress.mobi/getUptokenOfQiniu.do"</span>, <span class="comment">//请求图片的token</span></div><div class="line">      QINIU_PFOP: &#123;</div><div class="line">        url: <span class="string">"http://www.yourServerAddress.mobi/doQiniuPicPersist.do"</span> <span class="comment">//七牛持久保存请求地址</span></div><div class="line">      &#125;,</div><div class="line">      QINIU_VIDEO_TOKEN_URL: <span class="string">"http://www.yourServerAddress.mobi/getUptokenOfQiniu.do"</span>, <span class="comment">//请求媒体资源的token</span></div><div class="line">      QINIU_FILE_TOKEN_URL: <span class="string">"http://www.yourServerAddress.mobi/getUptokenOfQiniu.do?name=patch"</span>, <span class="comment">//其他资源的token的获取</span></div><div class="line">      QINIU_IMG_DOMAIN_URL: <span class="string">"https://image.yourServerAddress.mobi"</span>, <span class="comment">//图片文件地址的前缀</span></div><div class="line">      QINIU_DOMAIN_VIDEO_URL: <span class="string">"https://video.yourServerAddress.mobi"</span>, <span class="comment">//视频文件地址的前缀</span></div><div class="line">      QINIU_DOMAIN_FILE_URL: <span class="string">"https://static.yourServerAddress.com/"</span>, <span class="comment">//其他文件地址前缀</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> &lt;LzEditor</div><div class="line">      active=&#123;true&#125;</div><div class="line">      importContent=&#123;this.state.content&#125;</div><div class="line">      cbReceiver=&#123;this.receiveHtml&#125;</div><div class="line">      uploadConfig=&#123;uploadConfig&#125;</div><div class="line">      fullScreen=&#123;false&#125;</div><div class="line">        convertFormat="html"/&gt;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Test/&gt;, document.getElementById('test'));</div></pre></td></tr></table></figure>
+<p><img src="https://image.qiluyidian.mobi/54541628992197066868.png" alt="示例"></p>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active</td>
+<td>bool</td>
+<td>false</td>
+<td>有更新时是否刷新</td>
+</tr>
+<tr>
+<td>importContent</td>
+<td>string</td>
+<td>“”</td>
+<td>编辑器显示内容</td>
+</tr>
+<tr>
+<td>cbReceiver</td>
+<td>function</td>
+<td>null</td>
+<td>编辑器内容更新后的回调函数，此函数接受一个改动后的返回参数值</td>
+</tr>
+<tr>
+<td>undoRedo</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用撤销恢复功能，默认启用</td>
+</tr>
+<tr>
+<td>removeStyle</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用移除格式功能，默认启用</td>
+</tr>
+<tr>
+<td>pasteNoStyle</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用文本粘贴功能，默认启用</td>
+</tr>
+<tr>
+<td>blockStyle</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用段落样式设置功能（H1、列表、区段等），默认启用</td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用文本对齐设置功能，默认启用</td>
+</tr>
+<tr>
+<td>inlineStyle</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用文字样式设置功能（加粗、倾斜、下划线等），默认启用</td>
+</tr>
+<tr>
+<td>color</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用文字颜色设置功能，默认启用</td>
+</tr>
+<tr>
+<td>image</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用图片上传后插入功能，默认启用</td>
+</tr>
+<tr>
+<td>video</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用音视频上传后插入功能，默认启用</td>
+</tr>
+<tr>
+<td>urls</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用添加删除链接功能，默认启用</td>
+</tr>
+<tr>
+<td>autoSave</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用自动保存功能，默认启用</td>
+</tr>
+<tr>
+<td>fullScreen</td>
+<td>bool</td>
+<td>true</td>
+<td>是否启用全屏功能，默认启用</td>
+</tr>
+<tr>
+<td>convertFormat</td>
+<td>string</td>
+<td>“html”</td>
+<td>设置内容导入导出格式，支持html、markdown、raw三种格式，默认html</td>
+</tr>
+<tr>
+<td>uploadConfig</td>
+<td>object</td>
+<td>null</td>
+<td>启用媒体上传后插入功能时，上传参数配置对象</td>
+</tr>
+</tbody>
+</table>
+<h1 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h1>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/05/react/rudux/news/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">李钦</a></p>
+        <p><span>发布时间:</span>2017-05-05, 17:39:09</p>
+        <p><span>最后更新:</span>2017-05-05, 17:39:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/05/react/rudux/news/" title="">https://qingege.github.io/2017/05/05/react/rudux/news/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://qingege.github.io/2017/05/05/react/rudux/news/　　作者: 李钦" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/05/05/vue/vue/">
+                    Vue
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Live-demo"><span class="toc-number">1.</span> <span class="toc-text">Live demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Install"><span class="toc-number"></span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-number"></span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Usage-amp-Examples"><span class="toc-number"></span> <span class="toc-text">Usage & Examples</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-number"></span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#QA"><span class="toc-number"></span> <span class="toc-text">QA</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| LQ_Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/05/05/vue/vue/" title="下一篇: Vue">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/news/">react/rudux/news</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/vue/vue/">Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/rudux/rudux_demo/">Redux 基础搭建和功能介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_module/">React 组件之间的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_data/">react.js 组件之间state数据的传值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/react_creation/">React.js  WebPack  Babel ES6 React-router Redux 项目搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/propTypes/">React组件属性类型（propTypes）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/fetch/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/react/devtool/">devtool 安装应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/new/">Fetch 请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/hello-world/">fullPage</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/heco/">heco</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/css/css/">CSS背景图片处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zujian/">JavaScript/js_zujian</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_zong/">javascript总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/JavaScript/js_random/">js 随机数</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 李钦
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
